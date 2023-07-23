@@ -23,7 +23,7 @@ class StartScreen extends StatelessWidget {
                   child: Text('Skip'),
                 ),
               ),
-              Expanded(child: PageView()),
+              Expanded(child: PageView(children: []),),
               Expanded(
                 child: Row(
                   children: [
