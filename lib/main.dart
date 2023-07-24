@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:telead_e_learning/screen/auth_options.dart';
+import 'package:telead_e_learning/screen/register.dart';
 import 'package:telead_e_learning/screen/splash.dart';
 import 'package:telead_e_learning/screen/start.dart';
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const StartScreen(),
+      home: const Register(),
     );
   }
 }
