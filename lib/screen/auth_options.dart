@@ -105,7 +105,7 @@ class AuthOptions extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Don't have an account? ",
+                          "Don't have an Account? ",
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
