@@ -6,8 +6,11 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [Image.asset('assets/images/TeleadLogo.png')],
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [Image.asset('assets/images/TeleadLogo.png')],
+        ),
       ),
     );
   }
