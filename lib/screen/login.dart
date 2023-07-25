@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:telead_e_learning/controller/register_controller.dart';
+import 'package:telead_e_learning/controller/login_controller.dart';
 import 'package:telead_e_learning/widget/checkbox.dart';
 import 'package:telead_e_learning/widget/custom_rich_text.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
@@ -8,15 +8,15 @@ import 'package:telead_e_learning/widget/custom_text_field.dart';
 
 import '../widget/auth_button.dart';
 
-class Register extends StatelessWidget {
-  const Register({super.key});
+class Login extends StatelessWidget {
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double spacing = screenHeight * 0.01;
-    return GetBuilder<RegisterController>(
-        init: RegisterController(),
+    return GetBuilder<LoginController>(
+        init: LoginController(),
         builder: (controller) {
           return Scaffold(
             backgroundColor: const Color(0xffF5F9FF),
@@ -32,7 +32,7 @@ class Register extends StatelessWidget {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: const Text(
-                        'Getting Started!',
+                        'Let\'s Sign In!',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w400,
@@ -42,7 +42,7 @@ class Register extends StatelessWidget {
                     ),
                     SizedBox(height: spacing * 2),
                     const Text(
-                      'Create an Account to Continue your all Courses',
+                      'Login to Your Account to Continue your Courses',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class Register extends StatelessWidget {
                         CheckBox(),
                         SizedBox(width: 6),
                         Text(
-                          'Agree to Terms & Conditions',
+                          'Remember Me',
                           style: TextStyle(
                             color: Color(0xff545454),
                             fontWeight: FontWeight.bold,

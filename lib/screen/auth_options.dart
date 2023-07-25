@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:telead_e_learning/widget/auth_button.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
+import 'package:telead_e_learning/widget/custom_rich_text.dart';
 
 class AuthOptions extends StatelessWidget {
   const AuthOptions({Key? key}) : super(key: key);
@@ -38,19 +40,11 @@ class AuthOptions extends StatelessWidget {
                     ),
                     SizedBox(height: spacing * 2),
                     GestureDetector(
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 48,
-                            width: 48,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            child: Image.asset('assets/images/googleLogo.png'),
-                          ),
-                          const Text(
+                          AuthButton(iconPath: 'assets/images/googleLogo.png'),
+                          Text(
                             'Continue with Google',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -63,19 +57,11 @@ class AuthOptions extends StatelessWidget {
                     ),
                     SizedBox(height: spacing),
                     GestureDetector(
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 48,
-                            width: 48,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            child: Image.asset('assets/images/appleLogo.png'),
-                          ),
-                          const Text(
+                          AuthButton(iconPath: 'assets/images/appleLogo.png'),
+                          Text(
                             'Continue with Apple   ',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -101,30 +87,10 @@ class AuthOptions extends StatelessWidget {
                       label: 'Sign In with Your Account',
                     ),
                     SizedBox(height: spacing * 2),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Don't have an Account? ",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff545454)),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff0961F5),
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
+                    const CustomRichText(
+                      text: "Don't have an Account? ",
+                      buttonText: 'Sign Up',
+                    ),
                   ],
                 ),
               ),
