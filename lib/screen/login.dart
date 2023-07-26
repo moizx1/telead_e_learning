@@ -61,15 +61,18 @@ class Login extends StatelessWidget {
                       suffixIcon: controller.isTextVisible
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
-                      isTextVisible: controller.isTextVisible,
-                      onPress: controller.toggleVisibility,
+                      isObsecure: controller.isTextVisible,
+                      onSuffixPress: controller.toggleVisibility,
                     ),
                     SizedBox(height: spacing * 2),
-                    const Row(
+                    Row(
                       children: [
-                        CheckBox(),
-                        SizedBox(width: 6),
-                        Text(
+                        InkWell(
+                          onTap: controller.toggleCheckBox,
+                          child: CheckBox(isChecked: controller.isChecked),
+                        ),
+                        const SizedBox(width: 6),
+                        const Text(
                           'Remember Me',
                           style: TextStyle(
                             color: Color(0xff545454),
@@ -77,6 +80,21 @@ class Login extends StatelessWidget {
                             fontSize: 13,
                           ),
                         ),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                                onTap: () {},
+                                child: const Text(
+                                  'Forgot Password?',
+                                  style: TextStyle(
+                                    color: Color(0xff545454),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                )),
+                          ),
+                        )
                       ],
                     ),
                     SizedBox(height: spacing * 4),
@@ -103,7 +121,7 @@ class Login extends StatelessWidget {
                     SizedBox(height: spacing * 5),
                     const CustomRichText(
                         text: 'Don\'t have an Account? ',
-                        buttonText: 'Sign up'),
+                        buttonText: 'SIGN UP'),
                     SizedBox(height: spacing * 2),
                   ],
                 ),
@@ -113,9 +131,3 @@ class Login extends StatelessWidget {
         });
   }
 }
-
-
-
-
-
-

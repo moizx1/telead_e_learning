@@ -4,13 +4,17 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {super.key,
       this.hintText,
-      this.isTextVisible = false,
-      this.onPress,
+      this.isObsecure,
+      this.onTap,
+      this.onSuffixPress,
       this.prefixIcon,
-      this.suffixIcon});
+      this.suffixIcon,
+      this.isReadOnly,
+      this.controller});
+  final TextEditingController? controller;
   final String? hintText;
-  final bool isTextVisible;
-  final VoidCallback? onPress;
+  final bool? isObsecure, isReadOnly;
+  final VoidCallback? onSuffixPress, onTap;
   final IconData? prefixIcon, suffixIcon;
 
   @override
@@ -23,7 +27,10 @@ class CustomTextField extends StatelessWidget {
       ),
       child: Center(
         child: TextFormField(
-          obscureText: isTextVisible,
+          controller: controller,
+          onTap: onTap,
+          readOnly: isReadOnly ?? false,
+          obscureText: isObsecure ?? false,
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
             prefixIcon: Padding(
@@ -36,7 +43,7 @@ class CustomTextField extends StatelessWidget {
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 7.5),
               child: IconButton(
-                onPressed: onPress,
+                onPressed: onSuffixPress,
                 icon: Icon(
                   suffixIcon,
                   size: 25,

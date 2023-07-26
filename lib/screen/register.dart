@@ -61,15 +61,18 @@ class Register extends StatelessWidget {
                       suffixIcon: controller.isTextVisible
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
-                      isTextVisible: controller.isTextVisible,
-                      onPress: controller.toggleVisibility,
+                      isObsecure: controller.isTextVisible,
+                      onSuffixPress: controller.toggleVisibility,
                     ),
                     SizedBox(height: spacing * 2),
-                    const Row(
+                    Row(
                       children: [
-                        CheckBox(),
-                        SizedBox(width: 6),
-                        Text(
+                        InkWell(
+                          onTap: controller.toggleCheckBox,
+                          child: CheckBox(isChecked: controller.isChecked),
+                        ),
+                        const SizedBox(width: 6),
+                        const Text(
                           'Agree to Terms & Conditions',
                           style: TextStyle(
                             color: Color(0xff545454),
@@ -102,8 +105,8 @@ class Register extends StatelessWidget {
                     ),
                     SizedBox(height: spacing * 5),
                     const CustomRichText(
-                        text: 'Don\'t have an Account? ',
-                        buttonText: 'Sign up'),
+                        text: 'Already have an Account? ',
+                        buttonText: 'SIGN IN'),
                     SizedBox(height: spacing * 2),
                   ],
                 ),
@@ -113,9 +116,3 @@ class Register extends StatelessWidget {
         });
   }
 }
-
-
-
-
-
-

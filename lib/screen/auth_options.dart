@@ -89,7 +89,7 @@ class AuthOptions extends StatelessWidget {
                     SizedBox(height: spacing * 2),
                     const CustomRichText(
                       text: "Don't have an Account? ",
-                      buttonText: 'Sign Up',
+                      buttonText: 'SIGN UP',
                     ),
                   ],
                 ),
