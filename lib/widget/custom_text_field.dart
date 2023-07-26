@@ -35,10 +35,7 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: Padding(
               padding: const EdgeInsets.only(left: 7.5),
-              child: Icon(
-                prefixIcon,
-                size: 25,
-              ),
+              child: Icon(prefixIcon, size: 25),
             ),
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 7.5),
