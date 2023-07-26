@@ -33,10 +33,13 @@ class CustomTextField extends StatelessWidget {
           obscureText: isObsecure ?? false,
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
-            prefixIcon: Padding(
-              padding: const EdgeInsets.only(left: 7.5),
-              child: Icon(prefixIcon, size: 25),
-            ),
+            prefixIcon: prefixIcon != null
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 7.5),
+                    child: Icon(prefixIcon, size: 25),
+                  )
+                // : const Padding(padding: EdgeInsets.only(left: 1.5)),
+                : null,
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 7.5),
               child: IconButton(
@@ -54,7 +57,8 @@ class CustomTextField extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Color(0xff505050),
             ),
-            contentPadding: const EdgeInsets.only(right: 10),
+            contentPadding:
+                EdgeInsets.only(left: prefixIcon == null ? 21 : 0, right: 10),
           ),
         ),
       ),

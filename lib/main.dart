@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/auth_options.dart';
@@ -23,6 +24,17 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
+            scaffoldBackgroundColor: const Color(0xffF5F9FF),
+            appBarTheme: AppBarTheme(
+              toolbarHeight: Get.statusBarHeight,
+              titleSpacing: 0,
+              color: const Color(0xffF5F9FF),
+              titleTextStyle: const TextStyle(
+                color: Color(0xff202244),
+                fontSize: 21,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
           home: const AddProfileInfo(),
         );
