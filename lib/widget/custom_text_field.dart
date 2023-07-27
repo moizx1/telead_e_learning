@@ -10,11 +10,13 @@ class CustomTextField extends StatelessWidget {
       this.prefixIcon,
       this.suffixIcon,
       this.isReadOnly,
-      this.controller});
+      this.controller,
+      this.onChanged});
   final TextEditingController? controller;
   final String? hintText;
   final bool? isObsecure, isReadOnly;
   final VoidCallback? onSuffixPress, onTap;
+  final void Function(String)? onChanged;
   final IconData? prefixIcon, suffixIcon;
 
   @override
@@ -27,6 +29,7 @@ class CustomTextField extends StatelessWidget {
       ),
       child: Center(
         child: TextFormField(
+          onChanged: onChanged,
           controller: controller,
           onTap: onTap,
           readOnly: isReadOnly ?? false,

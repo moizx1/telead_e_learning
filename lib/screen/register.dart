@@ -50,9 +50,10 @@ class Register extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: spacing * 6),
-                    const CustomTextField(
+                    CustomTextField(
                       hintText: 'Email',
                       prefixIcon: Icons.email_outlined,
+                      onChanged: controller.onEmailChanged,
                     ),
                     SizedBox(height: spacing * 2),
                     CustomTextField(
@@ -63,6 +64,7 @@ class Register extends StatelessWidget {
                           : Icons.visibility_off_outlined,
                       isObsecure: controller.isTextVisible,
                       onSuffixPress: controller.toggleVisibility,
+                      onChanged: controller.onPasswordChanged,
                     ),
                     SizedBox(height: spacing * 2),
                     Row(
@@ -83,7 +85,7 @@ class Register extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: spacing * 4),
-                    const CustomButton(label: 'Sign Up'),
+                    CustomButton(label: 'Sign Up',onPress: controller.onSignUp,),
                     SizedBox(height: spacing * 2),
                     const Text(
                       'Or Continue With',
