@@ -4,8 +4,10 @@ import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/auth_options.dart';
 import 'package:telead_e_learning/screen/create_new_pin.dart';
+import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/register.dart';
+import 'package:telead_e_learning/screen/set_fingerprint.dart';
 import 'package:telead_e_learning/screen/splash.dart';
 import 'package:telead_e_learning/screen/start.dart';
 
@@ -23,7 +25,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Telead E-learning App',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: const Color(0xff0961F5)),
             useMaterial3: true,
             scaffoldBackgroundColor: const Color(0xffF5F9FF),
             appBarTheme: AppBarTheme(
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const CreateNewPin(),
+          home: const ForgotPassword(),
         );
       },
     );
