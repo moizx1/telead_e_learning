@@ -18,6 +18,7 @@ dependencies:
   sizer: ^2.0.15
   intl: ^0.18.1
   intl_phone_field: ^3.2.0
+  pinput: ^2.3.0
 
 dev_dependencies:
   flutter_test:
