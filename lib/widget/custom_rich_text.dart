@@ -1,9 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:telead_e_learning/screen/register.dart';
 
 class CustomRichText extends StatelessWidget {
-  const CustomRichText({super.key, this.text, this.buttonText});
+  const CustomRichText({super.key, this.text, this.buttonText, this.onTap});
   final String? text, buttonText;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +27,7 @@ class CustomRichText extends StatelessWidget {
                   color: Color(0xff0961F5),
                   decoration: TextDecoration.underline,
                 ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    // navigate to desired screen
-                  })
+                recognizer: TapGestureRecognizer()..onTap = onTap)
           ]),
     );
   }

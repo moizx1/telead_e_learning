@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/widget/app_bar.dart';
+import 'package:telead_e_learning/widget/custom_button.dart';
+import 'package:telead_e_learning/widget/reset_password_card.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -8,56 +11,36 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Forgot Password'),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
-          height: 80,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-          ),
-          child: Row(
-            children: [
-              Container(
-                height: 36,
-                width: 36,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0xffE8F1FF),
-                  border: Border.all(
-                    color: const Color(0xff167F71),
-                    width: 2,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.email_outlined,
-                  color: Color(0xff167F71),
-                  size: 20,
-                ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 28.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              textAlign: TextAlign.center,
+              'Select which contact details should we use to Reset Your Password',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff545454),
               ),
-              const SizedBox(width: 14),
-              const Column(
-                children: [
-                  Text(
-                    'Via Email',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xff505050),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    'priscilla.frank26@gmail.com',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff202244),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
+            ),
+            SizedBox(height: 3.h),
+            ResetPasswordCard(
+              title: 'Via Email',
+              content: 'priscilla.frank26@gmail.com',
+              icon: Icons.email_outlined,
+            ),
+            SizedBox(height: 2.h),
+            ResetPasswordCard(
+              title: 'Via Email',
+              content: 'priscilla.frank26@gmail.com',
+              icon: Icons.email_outlined,
+            ),
+            SizedBox(height: 4.h),
+            CustomButton(label: 'Continue'),
+            SizedBox(height: 7.h),
+          ],
         ),
       ),
     );
