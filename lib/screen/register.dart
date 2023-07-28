@@ -85,7 +85,8 @@ class Register extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: spacing * 4),
-                    CustomButton(label: 'Sign Up',onPress: controller.onSignUp,),
+                    CustomButton(
+                        label: 'Sign Up', onPress: controller.onSignUp),
                     SizedBox(height: spacing * 2),
                     const Text(
                       'Or Continue With',

@@ -50,20 +50,20 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: spacing * 6),
-                    const CustomTextField(
-                      hintText: 'Email',
-                      prefixIcon: Icons.email_outlined,
-                    ),
+                    CustomTextField(
+                        hintText: 'Email',
+                        prefixIcon: Icons.email_outlined,
+                        onChanged: controller.onEmailChanged),
                     SizedBox(height: spacing * 2),
                     CustomTextField(
-                      hintText: 'Password',
-                      prefixIcon: Icons.lock_outline_rounded,
-                      suffixIcon: controller.isTextVisible
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined,
-                      isObsecure: controller.isTextVisible,
-                      onSuffixPress: controller.toggleVisibility,
-                    ),
+                        hintText: 'Password',
+                        prefixIcon: Icons.lock_outline_rounded,
+                        suffixIcon: controller.isTextVisible
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        isObsecure: controller.isTextVisible,
+                        onSuffixPress: controller.toggleVisibility,
+                        onChanged: controller.onPasswordChanged),
                     SizedBox(height: spacing * 2),
                     Row(
                       children: [
@@ -98,7 +98,8 @@ class Login extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: spacing * 4),
-                    const CustomButton(label: 'Sign Up'),
+                    CustomButton(
+                        label: 'Sign In', onPress: controller.onSignIn),
                     SizedBox(height: spacing * 2),
                     const Text(
                       'Or Continue With',
