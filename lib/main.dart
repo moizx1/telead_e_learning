@@ -6,6 +6,7 @@ import 'package:telead_e_learning/screen/auth_options.dart';
 import 'package:telead_e_learning/screen/create_new_password.dart';
 import 'package:telead_e_learning/screen/create_new_pin.dart';
 import 'package:telead_e_learning/screen/forgot_password.dart';
+import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/register.dart';
 import 'package:telead_e_learning/screen/set_fingerprint.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const SplashScreen(),
+          home: const Home(),
         );
       },
     );
