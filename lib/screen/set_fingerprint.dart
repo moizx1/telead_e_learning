@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_alert.dart';
 import '../controller/create_new_pin_controller.dart';
-import '../widget/app_bar.dart';
+import '../widget/custom_app_bar.dart';
 
 class SetFingerprint extends StatelessWidget {
   const SetFingerprint({super.key});

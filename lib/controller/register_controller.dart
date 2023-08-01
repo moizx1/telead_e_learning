@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:telead_e_learning/model/UserModel.dart';
 
+import '../screen/login.dart';
+
 class RegisterController extends GetxController {
   String? email, password;
   bool isTextVisible = true;
@@ -31,8 +33,7 @@ class RegisterController extends GetxController {
 
   onSignUp() async {
     try {
-      UserModel userModel = UserModel(
-          email: email, password: password, confirmPassword: password);
+      UserModel userModel = UserModel(email: email, password: password);
 
       // Make the API request
       final response = await http.post(
@@ -45,6 +46,7 @@ class RegisterController extends GetxController {
       // Check if the request was successful (status code 200-299)
       if (response.statusCode >= 200 && response.statusCode < 300) {
         print('Signup successful!');
+        Get.off(() => Login());
         // You can handle the successful response here
       } else {
         // Handle the error response

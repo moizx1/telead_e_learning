@@ -3,7 +3,9 @@ class UserModel {
   String? lastName;
   String? email;
   String? password;
-  String? confirmPassword;
+  String? dateOfBirth;
+  String? phone;
+  String? gender;
   String? imageUrl;
 
   UserModel(
@@ -11,7 +13,9 @@ class UserModel {
       this.lastName,
       this.email,
       this.password,
-      this.confirmPassword,
+      this.phone,
+      this.gender,
+      this.dateOfBirth,
       this.imageUrl});
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -19,7 +23,9 @@ class UserModel {
     lastName = json['lastName'];
     email = json['email'];
     password = json['password'];
-    confirmPassword = json['confirmPassword'];
+    dateOfBirth = json['dateOfBirth'];
+    phone = json['phone'];
+    gender = json['gender'];
     imageUrl = json['imageUrl'];
   }
 
@@ -29,7 +35,9 @@ class UserModel {
     data['lastName'] = this.lastName;
     data['email'] = this.email;
     data['password'] = this.password;
-    data['confirmPassword'] = this.confirmPassword;
+    data['phone'] = this.phone;
+    data['gender'] = this.gender;
+    data['dateOfBirth'] = this.dateOfBirth;
     data['imageUrl'] = this.imageUrl;
     return data;
   }

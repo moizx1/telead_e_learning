@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomDropDown extends StatelessWidget {
-  const CustomDropDown({super.key});
+  const CustomDropDown({super.key, this.onChanged});
+  final void Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class CustomDropDown extends StatelessWidget {
               ),
             );
           }).toList(),
-          onChanged: (value) {},
+          onChanged: onChanged,
           isExpanded: true,
           hint: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 21.0),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:telead_e_learning/widget/app_bar.dart';
+import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 

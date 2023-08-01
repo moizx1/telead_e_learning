@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/controller/add_profile_info_controller.dart';
-import 'package:telead_e_learning/widget/app_bar.dart';
+import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_text_field.dart';
 import 'package:telead_e_learning/widget/profile_image.dart';

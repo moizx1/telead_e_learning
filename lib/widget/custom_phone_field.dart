@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class CustomPhoneField extends StatelessWidget {
-  const CustomPhoneField({super.key});
+  const CustomPhoneField({super.key, this.onChanged});
+  final void Function(dynamic)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class CustomPhoneField extends StatelessWidget {
         ),
       ),
       initialCountryCode: 'US',
-      onChanged: (phone) {},
+      onChanged: onChanged,
     );
   }
 }

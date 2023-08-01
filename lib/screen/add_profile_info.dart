@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/controller/add_profile_info_controller.dart';
-import 'package:telead_e_learning/widget/app_bar.dart';
+import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_text_field.dart';
 import 'package:telead_e_learning/widget/profile_image.dart';
@@ -30,13 +30,14 @@ class AddProfileInfo extends StatelessWidget {
                 children: [
                   const ProfileImage(),
                   SizedBox(height: 2.h),
-                  const CustomTextField(
-                    hintText: 'Full Name',
+                  CustomTextField(
+                    hintText: 'First Name',
+                    onChanged: controller.onFirstNameChanged,
                   ),
                   SizedBox(height: 2.h),
-                  const CustomTextField(
-                    hintText: 'NickName',
-                  ),
+                  CustomTextField(
+                      hintText: 'Last Name',
+                      onChanged: controller.onLastNameChanged),
                   SizedBox(height: 2.h),
                   CustomTextField(
                     controller: controller.dateInput,
@@ -48,15 +49,15 @@ class AddProfileInfo extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 2.h),
-                  const CustomTextField(
-                    hintText: 'Email',
-                    prefixIcon: Icons.email_outlined,
-                  ),
+                  CustomTextField(
+                      hintText: 'Email',
+                      prefixIcon: Icons.email_outlined,
+                      onChanged: controller.onEmailChanged),
                   SizedBox(height: 2.h),
-                  const CustomPhoneField(),
-                  const CustomDropDown(),
+                  CustomPhoneField(onChanged: controller.onPhoneChanged),
+                  CustomDropDown(onChanged: controller.onGenderChanged),
                   SizedBox(height: 5.h),
-                  const CustomButton(label: 'Continue'),
+                  CustomButton(label: 'Continue', onPress: controller.onSave),
                   SizedBox(height: 2.h)
                 ],
               ),

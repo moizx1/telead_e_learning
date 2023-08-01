@@ -4,7 +4,7 @@ import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import '../controller/create_new_pin_controller.dart';
-import '../widget/app_bar.dart';
+import '../widget/custom_app_bar.dart';
 
 class CreateNewPin extends StatelessWidget {
   const CreateNewPin({super.key});
