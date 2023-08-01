@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar(
-      {super.key,
-      this.showLeadingIcon = true,
-      this.hintText,
-      this.trailingIcon});
-  final bool showLeadingIcon;
+      {super.key, this.showLeadingIcon, this.hintText, this.trailingIcon});
+  final bool? showLeadingIcon;
   final String? hintText;
   final IconData? trailingIcon;
 
@@ -17,7 +14,9 @@ class CustomSearchBar extends StatelessWidget {
       shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
       surfaceTintColor: const MaterialStatePropertyAll(Color(0xffFFFFFF)),
-      leading: showLeadingIcon ? const Icon(Icons.search_rounded) : null,
+      leading: showLeadingIcon == true && showLeadingIcon != null
+          ? const Icon(Icons.search_rounded)
+          : null,
       hintText: hintText,
       hintStyle: const MaterialStatePropertyAll(
         TextStyle(

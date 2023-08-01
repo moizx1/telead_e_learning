@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/controller/home_controller.dart';
+import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
+import 'package:telead_e_learning/widget/list_title.dart';
 import 'package:telead_e_learning/widget/course_card.dart';
 import 'package:telead_e_learning/widget/custom_search_bar.dart';
 import 'package:telead_e_learning/widget/offers_card.dart';
@@ -59,32 +61,13 @@ class Home extends StatelessWidget {
                       ),
                       const SizedBox(height: 40),
                       const CustomSearchBar(
+                          showLeadingIcon: true,
                           hintText: 'Search For...',
                           trailingIcon: Icons.filter_list),
                       const SizedBox(height: 30),
                       const OffersCard(percentage: 25),
                       const SizedBox(height: 30),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Categories',
-                            style: TextStyle(
-                              color: Color(0xff202244),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'SEE ALL >',
-                            style: TextStyle(
-                              color: Color(0xff0961F5),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
+                      const ListTitle(title: 'Categories'),
                       Container(
                         // alignment: Alignment.center,
                         height: 40,
@@ -121,74 +104,64 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 25),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Popular Courses',
-                            style: TextStyle(
-                              color: Color(0xff202244),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'SEE ALL >',
-                            style: TextStyle(
-                              color: Color(0xff0961F5),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                            ),
-                          ),
+                      const ListTitle(title: 'Popular Courses'),
+                      const SizedBox(height: 10),
+                      CustomHorizontalList(
+                        currentIndex: controller.currentSelectedCategory,
+                        onTap: controller.onCategoryTap,
+                        titles: [
+                          'All',
+                          'Graphics Design',
+                          '3D Design',
+                          'Arts & Humanities',
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      Container(
-                        // alignment: Alignment.center,
-                        height: 40,
-                        child: ListView.builder(
-                          itemCount: 3,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            List items = [
-                              'All',
-                              'Graphics Design',
-                              '3D Design',
-                              'Arts & Humanities',
-                            ];
-                            return GestureDetector(
-                              onTap: () {
-                                controller.onCategoryTap(index);
-                              },
-                              child: Container(
-                                height: 30,
-                                // width: 58,
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 25),
-                                decoration: BoxDecoration(
-                                    color: index ==
-                                            controller.currentSelectedCategory
-                                        ? const Color(0xff167F71)
-                                        : const Color(0xffE8F1FF),
-                                    borderRadius: BorderRadius.circular(20)),
-                                alignment: Alignment.center,
-                                margin: const EdgeInsets.only(right: 15),
-                                child: Text(
-                                  items[index],
-                                  style: TextStyle(
-                                    color: index ==
-                                            controller.currentSelectedCategory
-                                        ? Colors.white
-                                        : const Color(0xff202244),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+                      // Container(
+                      //   // alignment: Alignment.center,
+                      //   height: 40,
+                      //   child: ListView.builder(
+                      //     itemCount: 3,
+                      //     scrollDirection: Axis.horizontal,
+                      //     itemBuilder: (context, index) {
+                      //       List items = [
+                      // 'All',
+                      // 'Graphics Design',
+                      // '3D Design',
+                      // 'Arts & Humanities',
+                      //       ];
+                      //       return GestureDetector(
+                      //         onTap: () {
+                      //           controller.onCategoryTap(controller.categoryIndex);
+                      //         },
+                      //         child: Container(
+                      //           height: 30,
+                      //           // width: 58,
+                      //           padding:
+                      //               const EdgeInsets.symmetric(horizontal: 25),
+                      //           decoration: BoxDecoration(
+                      //               color: index ==
+                      //                       controller.currentSelectedCategory
+                      //                   ? const Color(0xff167F71)
+                      //                   : const Color(0xffE8F1FF),
+                      //               borderRadius: BorderRadius.circular(20)),
+                      //           alignment: Alignment.center,
+                      //           margin: const EdgeInsets.only(right: 15),
+                      //           child: Text(
+                      //             items[index],
+                      //             style: TextStyle(
+                      //               color: index ==
+                      //                       controller.currentSelectedCategory
+                      //                   ? Colors.white
+                      //                   : const Color(0xff202244),
+                      //               fontWeight: FontWeight.bold,
+                      //               fontSize: 15,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 252,
                         // padding: EdgeInsets.only(right: 18),
@@ -216,27 +189,7 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 25),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Top Mentor',
-                            style: TextStyle(
-                              color: Color(0xff202244),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            'SEE ALL >',
-                            style: TextStyle(
-                              color: Color(0xff0961F5),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
+                      const ListTitle(title: 'Top Mentor'),
                       const SizedBox(height: 15),
                       SizedBox(
                         height: 100,
