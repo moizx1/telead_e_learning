@@ -43,7 +43,7 @@ class MentorCard extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 20),
-        const Divider(color: Color(0xffE8F1FF)),
+        const Divider(color: Color.fromARGB(255, 212, 223, 242)),
         const SizedBox(height: 20),
       ],
     );
