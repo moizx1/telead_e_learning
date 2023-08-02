@@ -5,8 +5,10 @@ import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/all_category.dart';
 import 'package:telead_e_learning/screen/auth_options.dart';
+import 'package:telead_e_learning/screen/courses_list.dart';
 import 'package:telead_e_learning/screen/create_new_password.dart';
 import 'package:telead_e_learning/screen/create_new_pin.dart';
+import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/login.dart';
@@ -16,6 +18,7 @@ import 'package:telead_e_learning/screen/search.dart';
 import 'package:telead_e_learning/screen/set_fingerprint.dart';
 import 'package:telead_e_learning/screen/splash.dart';
 import 'package:telead_e_learning/screen/start.dart';
+import 'package:telead_e_learning/screen/top_mentors.dart';
 import 'package:telead_e_learning/screen/verify_password.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             scaffoldBackgroundColor: const Color(0xffF5F9FF),
             appBarTheme: AppBarTheme(
-              // toolbarHeight: Get.statusBarHeight,
+              toolbarHeight: Get.statusBarHeight,
               titleSpacing: 0,
               color: const Color(0xffF5F9FF),
               titleTextStyle: const TextStyle(
@@ -50,7 +53,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const PopularCourses(),
+          home: const Dashboard(),
         );
       },
     );

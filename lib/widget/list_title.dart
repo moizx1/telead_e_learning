@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ListTitle extends StatelessWidget {
-  const ListTitle({super.key, this.title});
+  const ListTitle({super.key, this.title, this.trailingText});
   final String? title;
+  final String? trailingText;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,8 @@ class ListTitle extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        const Text(
-          'SEE ALL >',
+        Text(
+          trailingText != null ? trailingText ?? '' : 'SEE ALL >',
           style: TextStyle(
             color: Color(0xff0961F5),
             fontWeight: FontWeight.bold,

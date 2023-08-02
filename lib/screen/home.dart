@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/controller/home_controller.dart';
 import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
 import 'package:telead_e_learning/widget/list_title.dart';
-import 'package:telead_e_learning/widget/course_card.dart';
+import 'package:telead_e_learning/widget/home_course_card.dart';
 import 'package:telead_e_learning/widget/custom_search_bar.dart';
 import 'package:telead_e_learning/widget/offers_card.dart';
 
@@ -177,7 +177,7 @@ class Home extends StatelessWidget {
                                   top: 17.5,
                                   bottom: 0,
                                   right: 8),
-                              child: const CourseCard(
+                              child: const HomeCourseCard(
                                 category: 'Graphics Design',
                                 name: 'Graphics Design Advanced',
                                 price: 28,

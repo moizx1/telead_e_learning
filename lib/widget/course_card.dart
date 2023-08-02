@@ -13,52 +13,53 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 280,
+      width: 360,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
       child: ConstrainedBox(
-        constraints: BoxConstraints.expand(height: 240),
-        child: Column(
+        constraints: BoxConstraints.expand(height: 140),
+        child: Row(
           children: [
             Container(
-              height: 134,
-              width: 284,
+              height: 140,
+              width: 130,
               color: Colors.black,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 16.0, right: 16, top: 5, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '$category',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            color: Color(0xffFF6B00)),
-                      ),
-                      const Icon(
-                        Icons.bookmark_border_rounded,
-                        size: 26,
-                      )
-                    ],
-                  ),
-                  Text(
-                    '$name',
-                    style: const TextStyle(
-                        color: Color(0xff202244),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16),
-                  ),
-                  const SizedBox(height: 7.5),
-                  Row(children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 16.0, right: 16, top: 5.5, bottom: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '$category',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Color(0xffFF6B00)),
+                        ),
+                        const Icon(
+                          Icons.bookmark_border_rounded,
+                          size: 26,
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 1.5),
+                    Text(
+                      '$name',
+                      style: const TextStyle(
+                          color: Color(0xff202244),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    const SizedBox(height: 2.5),
                     Text(
                       '\$ ${price?.toInt()}',
                       style: const TextStyle(
@@ -67,35 +68,35 @@ class CourseCard extends StatelessWidget {
                         color: Color(0xff0961F5),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    const Text('|'),
-                    const SizedBox(width: 10),
-                    const Icon(
-                      Icons.star_rounded,
-                      color: Color(0xffFAC025),
-                      size: 18,
-                    ),
-                    Text(
-                      '$rating',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff202244),
+                    const SizedBox(height: 2.5),
+                    Row(children: [
+                      const Icon(
+                        Icons.star_rounded,
+                        color: Color(0xffFAC025),
+                        size: 18,
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    const Text('|'),
-                    const SizedBox(width: 10),
-                    Text(
-                      '${courseCode?.toInt()} Std',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff202244),
+                      Text(
+                        '$rating',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff202244),
+                        ),
                       ),
-                    ),
-                  ])
-                ],
+                      const SizedBox(width: 10),
+                      const Text('|'),
+                      const SizedBox(width: 10),
+                      Text(
+                        '${courseCode?.toInt()} Std',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff202244),
+                        ),
+                      ),
+                    ])
+                  ],
+                ),
               ),
             ),
           ],

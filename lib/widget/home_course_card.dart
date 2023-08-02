@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PopularCourseCard extends StatelessWidget {
-  const PopularCourseCard(
+class HomeCourseCard extends StatelessWidget {
+  const HomeCourseCard(
       {super.key,
       this.category,
       this.name,
@@ -13,19 +13,19 @@ class PopularCourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 360,
+      width: 280,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
       child: ConstrainedBox(
-        constraints: BoxConstraints.expand(height: 130),
-        child: Row(
+        constraints: BoxConstraints.expand(height: 240),
+        child: Column(
           children: [
             Container(
-              height: 130,
-              width: 130,
+              height: 134,
+              width: 284,
               color: Colors.black,
             ),
             Padding(

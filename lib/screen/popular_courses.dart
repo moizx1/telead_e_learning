@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
-
 import '../controller/popular_courses_controller.dart';
-import '../widget/popular_course_card.dart';
+import '../widget/course_card.dart';
 
 class PopularCourses extends StatelessWidget {
   const PopularCourses({super.key});
@@ -24,25 +23,39 @@ class PopularCourses extends StatelessWidget {
               ),
               body: Column(
                 children: [
-                  CustomHorizontalList(
-                    currentIndex: controller.currentSelectedCategory,
-                    onTap: controller.onCategoryTap,
-                    titles: [
-                      'All',
-                      'Graphics Design',
-                      '3D Design',
-                      'Arts & Humanities',
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28.0),
+                    child: CustomHorizontalList(
+                      currentIndex: controller.currentSelectedCategory,
+                      onTap: controller.onCategoryTap,
+                      titles: [
+                        'All',
+                        'Graphics Design',
+                        '3D Design',
+                        'Arts & Humanities',
+                      ],
+                    ),
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: 7,
-                    itemBuilder: (context, index) {
-                      return PopularCourseCard(
-                        category: 'Graphics Design',
-                      );
-                    },
+                  Expanded(
+                    child: ListView.builder(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 28),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: 7,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: CourseCard(
+                            category: 'Graphics Design',
+                            courseCode: 7385,
+                            name: 'Advanced Graphics Design',
+                            price: 28,
+                            rating: 4.2,
+                          ),
+                        );
+                      },
+                    ),
                   )
                 ],
               ),
