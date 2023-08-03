@@ -7,8 +7,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.showSearchIcon = false,
     this.tabBar,
+    this.color,
   });
   final String? title;
+  final Color? color;
   final bool? showSearchIcon;
   final PreferredSizeWidget? tabBar;
   @override
@@ -19,6 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
         // toolbarHeight: 96,
+        backgroundColor: color,
         leading: const Padding(
           padding: EdgeInsets.only(left: 10),
           child: Icon(

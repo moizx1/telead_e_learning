@@ -78,7 +78,7 @@ class SetFingerprint extends StatelessWidget {
                           label: 'Continue', width: 21.h, isTextCenter: false),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

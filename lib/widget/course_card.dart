@@ -7,9 +7,11 @@ class CourseCard extends StatelessWidget {
       this.name,
       this.price,
       this.rating,
-      this.courseCode});
+      this.courseCode,
+      this.onTap});
   final String? category, name;
   final double? price, rating, courseCode;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,9 +47,12 @@ class CourseCard extends StatelessWidget {
                               fontSize: 12,
                               color: Color(0xffFF6B00)),
                         ),
-                        const Icon(
-                          Icons.bookmark_border_rounded,
-                          size: 26,
+                        InkWell(
+                          onTap: onTap,
+                          child: const Icon(
+                            Icons.bookmark_border_rounded,
+                            size: 26,
+                          ),
                         )
                       ],
                     ),
