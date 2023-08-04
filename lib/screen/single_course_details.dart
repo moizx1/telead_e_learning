@@ -322,7 +322,7 @@ class SingleCourseDetails extends StatelessWidget {
                                                                           color:
                                                                               Color(0xff202244),
                                                                         ),
-                                                                      )),
+                                                                      ),),
                                                               title: Column(
                                                                 crossAxisAlignment:
                                                                     CrossAxisAlignment
