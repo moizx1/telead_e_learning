@@ -36,7 +36,7 @@ class MentorCourseCard extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 16.0, right: 16, top: 5.5, bottom: 10),
+                    left: 16.0, right: 0, top: 5.5, bottom: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -45,6 +45,9 @@ class MentorCourseCard extends StatelessWidget {
                       children: [
                         Text(
                           '$category',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: false,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
@@ -62,6 +65,9 @@ class MentorCourseCard extends StatelessWidget {
                     const SizedBox(height: 1.5),
                     Text(
                       '$name',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
                       style: const TextStyle(
                           color: Color(0xff202244),
                           fontWeight: FontWeight.bold,

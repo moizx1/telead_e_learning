@@ -14,6 +14,7 @@ import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
+import 'package:telead_e_learning/screen/notifications.dart';
 import 'package:telead_e_learning/screen/popular_courses.dart';
 import 'package:telead_e_learning/screen/register.dart';
 import 'package:telead_e_learning/screen/search.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: MentorDetails(),
+          home: Notifications(),
         );
       },
     );

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/home.dart';
-import '../model/UserModel.dart';
+import '../model/user_model.dart';
 
 class LoginController extends GetxController {
   String? email, password;

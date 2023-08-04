@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:telead_e_learning/model/UserModel.dart';
+import 'package:telead_e_learning/model/user_model.dart';
 import 'package:telead_e_learning/screen/create_new_pin.dart';
 import 'package:telead_e_learning/screen/home.dart';
 

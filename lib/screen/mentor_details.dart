@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:telead_e_learning/controller/mentor_details_controller.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/mentor_course_card.dart';
+import 'package:telead_e_learning/widget/review_card.dart';
 
 class MentorDetails extends StatelessWidget {
   const MentorDetails({super.key});
@@ -164,18 +165,27 @@ class MentorDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 25, vertical: 17.5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.white,
                     ),
                     child: Column(
                       children: [
-                        Text(
-                          'Sed quanta s alias nunc tantum possitne tanta Nec vero sum nescius esse utilitatem in historia non modo voluptatem.',
-                          style: TextStyle(
-                            color: Color(0xffA0A4AB),
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 20,
+                          ),
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Sed quanta s alias nunc tantum possitne tanta Nec vero sum nescius esse utilitatem in historia non modo voluptatem.',
+                            style: TextStyle(
+                              color: Color(0xffA0A4AB),
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Container(
@@ -232,17 +242,46 @@ class MentorDetails extends StatelessWidget {
                             ],
                           ),
                         ),
-                        // ListView.builder(
-                        //   shrinkWrap: true,
-                        //   itemBuilder: (context, index) {
-                        //     return Column(
-                        //       children: [
-                        //         MentorCourseCard(),
-                        //         const Divider(),
-                        //       ],
-                        //     );
-                        //   },
-                        // ),
+                        controller.selectedIndex == 1
+                            ? ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: 4,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      Padding(
+                                          padding: EdgeInsets.all(20),
+                                          child: ReviewCard()),
+                                      if (index < 3)
+                                        const Divider(
+                                          color: Color(0xffE8F1FF),
+                                        ),
+                                    ],
+                                  );
+                                },
+                              )
+                            : ListView.builder(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 15),
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: 4,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      MentorCourseCard(
+                                          name:
+                                              'Advance Graphics UI & UX Course'),
+                                      if (index < 3)
+                                        const Divider(
+                                          height: 30,
+                                          color: Color(0xffE8F1FF),
+                                        ),
+                                    ],
+                                  );
+                                },
+                              ),
                       ],
                     ),
                   ),

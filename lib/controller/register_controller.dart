@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:telead_e_learning/model/UserModel.dart';
+import 'package:telead_e_learning/model/user_model.dart';
 
 import '../screen/login.dart';
 

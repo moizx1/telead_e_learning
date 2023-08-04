@@ -26,12 +26,18 @@ class ReviewCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'William S. Cunningham',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff202244),
+                  SizedBox(
+                    width: 140,
+                    child: Text(
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                      'William S. Cunninghammmmm',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff202244),
+                      ),
                     ),
                   ),
                   Container(
@@ -66,6 +72,9 @@ class ReviewCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
                   'The Course is Very Good dolor sit amet, consect tur adipiscing elit. Naturales divitias dixit parab les esse, quod parvo'),
               const SizedBox(height: 10),
               Row(
