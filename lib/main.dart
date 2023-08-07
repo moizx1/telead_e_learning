@@ -15,8 +15,10 @@ import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
 import 'package:telead_e_learning/screen/notifications.dart';
+import 'package:telead_e_learning/screen/payment_methods.dart';
 import 'package:telead_e_learning/screen/popular_courses.dart';
 import 'package:telead_e_learning/screen/register.dart';
+import 'package:telead_e_learning/screen/reviews.dart';
 import 'package:telead_e_learning/screen/search.dart';
 import 'package:telead_e_learning/screen/set_fingerprint.dart';
 import 'package:telead_e_learning/screen/single_course_details.dart';
@@ -24,6 +26,7 @@ import 'package:telead_e_learning/screen/splash.dart';
 import 'package:telead_e_learning/screen/start.dart';
 import 'package:telead_e_learning/screen/top_mentors.dart';
 import 'package:telead_e_learning/screen/verify_password.dart';
+import 'package:telead_e_learning/screen/write_review.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 
 void main() {
@@ -57,7 +60,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: Notifications(),
+          home: PaymentMethods(),
         );
       },
     );
