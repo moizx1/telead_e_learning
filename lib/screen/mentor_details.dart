@@ -15,12 +15,12 @@ class MentorDetails extends StatelessWidget {
         init: MentorDetailsController(),
         builder: (controller) {
           return Scaffold(
-            appBar: CustomAppBar(color: Colors.white),
+            appBar: const CustomAppBar(color: Colors.white),
             body: SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 30),
+                    padding: const EdgeInsets.only(left: 10, right: 10, bottom: 30),
                     color: Colors.white,
                     child: Column(
                       children: [
@@ -28,7 +28,7 @@ class MentorDetails extends StatelessWidget {
                           // alignment: Alignment.center,
                           height: 120,
                           width: 120,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.black,
                             shape: BoxShape.circle,
                           ),
@@ -51,7 +51,7 @@ class MentorDetails extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 7.5),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Column(

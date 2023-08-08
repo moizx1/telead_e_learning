@@ -2,8 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CustomRadioTile extends StatelessWidget {
-  const CustomRadioTile({super.key, this.title, this.onchanged});
-  final String? title;
+  const CustomRadioTile(
+      {super.key, this.title, this.value, this.groupValue, this.onchanged});
+  final String? title, value, groupValue;
   final Function(String?)? onchanged;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,8 @@ class CustomRadioTile extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Radio(value: 'value', groupValue: 'value', onChanged: onchanged),
+          Radio<String?>(
+              value: value, groupValue: groupValue, onChanged: onchanged),
           const SizedBox(width: 10),
         ],
       ),

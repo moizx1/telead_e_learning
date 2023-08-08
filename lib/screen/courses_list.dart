@@ -6,7 +6,7 @@ import 'package:telead_e_learning/widget/custom_search_bar.dart';
 import 'package:telead_e_learning/widget/home_course_card.dart';
 import 'package:telead_e_learning/widget/list_title.dart';
 
-import '../widget/course_card.dart';
+import '../widget/course_cards.dart';
 
 class CoursesList extends StatelessWidget {
   const CoursesList({super.key});
@@ -79,7 +79,7 @@ class CoursesList extends StatelessWidget {
                           alignment: Alignment.center,
                           // margin: const EdgeInsets.only(right: 15),
                           child: Text(
-                            'Courses',
+                            'Mentors',
                             // items[index],
                             style: TextStyle(
                               // color: index == currentIndex
@@ -109,7 +109,7 @@ class CoursesList extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 15),
-                        child: CourseCard(
+                        child: CourseCards.CourseCard(
                           category: 'Graphics Design',
                           courseCode: 7385,
                           name: 'Advanced Graphics Design',
@@ -150,8 +150,6 @@ class CoursesList extends StatelessWidget {
           //       // iconSize: 40,
           //       // onTap: _onItemTapped,
           //       elevation: 5),
-
-
         );
       },
     );

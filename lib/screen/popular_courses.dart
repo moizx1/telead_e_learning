@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
 import '../controller/popular_courses_controller.dart';
-import '../widget/course_card.dart';
+import '../widget/course_cards.dart';
 
 class PopularCourses extends StatelessWidget {
   const PopularCourses({super.key});
@@ -46,7 +46,7 @@ class PopularCourses extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: CourseCard(
+                          child: CourseCards.CourseCard(
                             category: 'Graphics Design',
                             courseCode: 7385,
                             name: 'Advanced Graphics Design',

@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
 import '../controller/bookmarks_controller.dart';
-import '../widget/course_card.dart';
+import '../widget/course_cards.dart';
 import '../widget/custom_button.dart';
 
 class Bookmarks extends StatelessWidget {
@@ -48,7 +48,7 @@ class Bookmarks extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: CourseCard(
+                          child: CourseCards.CourseCard(
                             category: 'Graphics Design',
                             courseCode: 7385,
                             name: 'Advanced Graphics Design',
@@ -76,7 +76,7 @@ class Bookmarks extends StatelessWidget {
                                           ),
                                         ),
                                         const SizedBox(height: 25),
-                                        CourseCard(
+                                        CourseCards.CourseCard(
                                           category: 'Graphics Design',
                                           courseCode: 7385,
                                           name: 'Advanced Graphics Design',
