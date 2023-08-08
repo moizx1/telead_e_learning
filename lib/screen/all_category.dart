@@ -14,13 +14,13 @@ class AllCategory extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 28.0),
         child: Column(
           children: [
-            CustomSearchBar(
+            const CustomSearchBar(
               hintText: 'Search for...',
               trailingIcon: Icons.search_rounded,
             ),
             Expanded(
               child: GridView.builder(
-                  padding: EdgeInsets.only(top: 20),
+                  padding:const  EdgeInsets.only(top: 20),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
@@ -29,7 +29,7 @@ class AllCategory extends StatelessWidget {
                   itemCount: 8,
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
-                      color: Color(0xffE8F1FF),
+                      color: const Color(0xffE8F1FF),
                       child: Center(child: Text('$index')),
                     );
                   }),

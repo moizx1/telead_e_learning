@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:telead_e_learning/controller/login_controller.dart';
-import 'package:telead_e_learning/widget/checkbox.dart';
+import 'package:telead_e_learning/widget/custom_checkbox.dart';
 import 'package:telead_e_learning/widget/custom_rich_text.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_text_field.dart';
@@ -69,7 +69,8 @@ class Login extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: controller.toggleCheckBox,
-                          child: CheckBox(isChecked: controller.isChecked),
+                          child:
+                              CustomCheckBox(isChecked: controller.isChecked),
                         ),
                         const SizedBox(width: 6),
                         const Text(

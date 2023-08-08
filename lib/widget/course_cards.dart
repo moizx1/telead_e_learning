@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telead_e_learning/widget/custom_checkbox.dart';
 
 class CourseCards extends StatelessWidget {
   final Widget _child;
@@ -22,6 +23,33 @@ class CourseCards extends StatelessWidget {
             rating: rating,
             courseCode: courseCode,
             onTap: onTap),
+        super(key: key);
+
+  CourseCards.CompletedCourseCard({
+    Key? key,
+    final String? category,
+    final String? name,
+    final String? time,
+    final double? rating,
+  })  : _child = _CompletedCourseCard(
+            category: category, name: name, rating: rating, time: time),
+        super(key: key);
+
+  CourseCards.OngoingCourseCard({
+    Key? key,
+    final String? category,
+    final String? name,
+    final String? time,
+    required final double rating,
+    required final double remaining,
+    required final double total,
+  })  : _child = _OngoingCourseCard(
+            category: category,
+            name: name,
+            rating: rating,
+            time: time,
+            remaining: remaining,
+            total: total),
         super(key: key);
 
   @override
@@ -141,35 +169,160 @@ class _CourseCard extends StatelessWidget {
   }
 }
 
-class _CompletedCourseCard extends StatelessWidget {
-  const _CompletedCourseCard(
+class _OngoingCourseCard extends StatelessWidget {
+  const _OngoingCourseCard(
       {super.key,
       this.category,
       this.name,
-      this.price,
-      this.rating,
-      this.courseCode,
-      this.onTap});
-  final String? category, name;
-  final double? price, rating, courseCode;
-  final VoidCallback? onTap;
+      this.time,
+      required this.rating,
+      required this.remaining,
+      required this.total});
+  final String? category, name, time;
+  final double rating, total, remaining;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+      ),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints.expand(height: 134),
+        child: Row(
+          children: [
+            Container(
+              height: 134,
+              width: 130,
+              color: Colors.black,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 16.0, right: 16, top: 5.5, bottom: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      category ?? '',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color(0xffFF6B00)),
+                    ),
+                    const SizedBox(height: 1.5),
+                    Text(
+                      name ?? '',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          color: Color(0xff202244),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    const SizedBox(height: 7.5),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star_rounded,
+                          color: Color(0xffFAC025),
+                          size: 18,
+                        ),
+                        Text(
+                          rating.toString(),
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff202244),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        const Text('|'),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${time} Hrs Mins',
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff202244),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 2.5),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 8,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color(0xffE8F1FF),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: LinearProgressIndicator(
+                                backgroundColor: const Color(0xffF5F9FF),
+                                value: (remaining / total),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${remaining.toInt()}/${total.toInt()}',
+                          style: const TextStyle(
+                              color: Color(0xff202244),
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 5),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CompletedCourseCard extends StatelessWidget {
+  const _CompletedCourseCard({
+    super.key,
+    this.category,
+    this.name,
+    this.time,
+    this.rating,
+  });
+  final String? category, name, time;
+  final double? rating;
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Container(
-          width: 360,
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
           ),
           child: ConstrainedBox(
-            constraints: BoxConstraints.expand(height: 140),
+            constraints: const BoxConstraints.expand(height: 134),
             child: Row(
               children: [
                 Container(
-                  height: 140,
+                  height: 134,
                   width: 130,
                   color: Colors.black,
                 ),
@@ -178,10 +331,11 @@ class _CompletedCourseCard extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 16.0, right: 16, top: 5.5, bottom: 10),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '$category',
+                          category ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
@@ -189,7 +343,7 @@ class _CompletedCourseCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 1.5),
                         Text(
-                          '$name',
+                          name ?? '',
                           style: const TextStyle(
                               color: Color(0xff202244),
                               fontWeight: FontWeight.bold,
@@ -204,7 +358,7 @@ class _CompletedCourseCard extends StatelessWidget {
                               size: 18,
                             ),
                             Text(
-                              '$rating',
+                              rating.toString(),
                               style: const TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
@@ -215,7 +369,7 @@ class _CompletedCourseCard extends StatelessWidget {
                             const Text('|'),
                             const SizedBox(width: 10),
                             Text(
-                              '${courseCode?.toInt()} Hrs Mins',
+                              '${time} Hrs Mins',
                               style: const TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
@@ -225,13 +379,20 @@ class _CompletedCourseCard extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 2.5),
-                        Text(
-                          'View Certificate',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff167F71),
-                          ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              'View Certificate',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff167F71),
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                            SizedBox(width: 7.5),
+                          ],
                         ),
                       ],
                     ),
@@ -240,6 +401,11 @@ class _CompletedCourseCard extends StatelessWidget {
               ],
             ),
           ),
+        ),
+        Positioned(
+          right: 20,
+          top: -7.5,
+          child: CustomCheckBox(isChecked: true),
         ),
       ],
     );

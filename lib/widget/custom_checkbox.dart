@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CheckBox extends StatelessWidget {
-  const CheckBox({super.key, this.isChecked = false});
+class CustomCheckBox extends StatelessWidget {
+  const CustomCheckBox({super.key, this.isChecked = false});
   final bool isChecked;
 
   @override
