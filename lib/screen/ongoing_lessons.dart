@@ -7,7 +7,7 @@ import '../widget/custom_button.dart';
 class OngoingLessons extends StatelessWidget {
   OngoingLessons({super.key});
 
-  List<CourseSection> courseSections = CourseData.generateDummyData();
+  final List<CourseSection> courseSections = CourseData.generateDummyData();
 
   @override
   Widget build(BuildContext context) {

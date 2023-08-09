@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 
 class WriteReviewController extends GetxController {
-  int wordCount = 250;
+  int reviewWordCount = 165;
+  int totalWordCount = 165;
   String? review;
   onChanged(value) {
     review = value;
-    wordCount--;
+    // wordCount >= 1 ? wordCount-- : null;
+    reviewWordCount = totalWordCount - value.toString().length;
     update();
   }
 }
