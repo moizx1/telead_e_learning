@@ -51,7 +51,7 @@ class MentorCard extends StatelessWidget {
                 ),
               ],
             ),
-            if (showMessageIcon == true) Icon(Icons.message_outlined),
+            if (showMessageIcon == true) const Icon(Icons.message_outlined),
           ],
         ),
         const SizedBox(height: 15),

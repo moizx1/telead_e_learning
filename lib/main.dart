@@ -6,12 +6,14 @@ import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/all_category.dart';
 import 'package:telead_e_learning/screen/auth_options.dart';
 import 'package:telead_e_learning/screen/bookmarks.dart';
+import 'package:telead_e_learning/screen/chat_screen.dart';
 import 'package:telead_e_learning/screen/courses_list.dart';
 import 'package:telead_e_learning/screen/create_new_password.dart';
 import 'package:telead_e_learning/screen/create_new_pin.dart';
 import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
+import 'package:telead_e_learning/screen/inbox.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
 import 'package:telead_e_learning/screen/my_courses.dart';
@@ -62,7 +64,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: WriteReview(),
+          home: const ChatScreen(),
         );
       },
     );
