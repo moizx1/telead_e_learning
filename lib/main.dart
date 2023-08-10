@@ -18,7 +18,7 @@ import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
 import 'package:telead_e_learning/screen/my_courses.dart';
 import 'package:telead_e_learning/screen/notifications.dart';
-import 'package:telead_e_learning/screen/ongoing_lessons.dart';
+import 'package:telead_e_learning/screen/lessons.dart';
 import 'package:telead_e_learning/screen/payment_methods.dart';
 import 'package:telead_e_learning/screen/popular_courses.dart';
 import 'package:telead_e_learning/screen/register.dart';
@@ -32,6 +32,7 @@ import 'package:telead_e_learning/screen/top_mentors.dart';
 import 'package:telead_e_learning/screen/verify_password.dart';
 import 'package:telead_e_learning/screen/write_review.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
+import 'package:telead_e_learning/widget/video_player_screen.dart';
 
 void main() {
   runApp(const GetMaterialApp(
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const ChatScreen(),
+          home: Lessons(),
         );
       },
     );

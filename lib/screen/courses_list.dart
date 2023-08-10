@@ -17,7 +17,7 @@ class CoursesList extends StatelessWidget {
       init: CourseListController(),
       builder: (controller) {
         return Scaffold(
-          appBar: CustomAppBar(title: 'Online Courses'),
+          appBar: const CustomAppBar(title: 'Online Courses'),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 28.0),
             child: Column(
@@ -47,14 +47,14 @@ class CoursesList extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20)),
                           alignment: Alignment.center,
                           // margin: const EdgeInsets.only(right: 15),
-                          child: Text(
+                          child: const Text(
                             'Courses',
                             // items[index],
                             style: TextStyle(
                               // color: index == currentIndex
                               //     ? Colors.white
                               //     : const Color(0xff202244),
-                              color: const Color(0xff202244),
+                              color:  Color(0xff202244),
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             ),
@@ -78,14 +78,14 @@ class CoursesList extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20)),
                           alignment: Alignment.center,
                           // margin: const EdgeInsets.only(right: 15),
-                          child: Text(
+                          child: const Text(
                             'Mentors',
                             // items[index],
                             style: TextStyle(
                               // color: index == currentIndex
                               //     ? Colors.white
                               //     : const Color(0xff202244),
-                              color: const Color(0xff202244),
+                              color:  Color(0xff202244),
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             ),

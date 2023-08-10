@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/controller/home_controller.dart';
 import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
 import 'package:telead_e_learning/widget/list_title.dart';

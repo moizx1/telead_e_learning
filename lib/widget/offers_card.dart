@@ -43,13 +43,13 @@ class OffersCard extends StatelessWidget {
             const Spacer(
               flex: 2,
             ),
-            Container(
+            const SizedBox(
               width: 170,
               child: Wrap(
                 children: [
                   Text(
                     'Get a Discount for Every Course Order only Valid for Today.!',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 13,
                       color: Colors.white,
                       fontWeight: FontWeight.w900,
