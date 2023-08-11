@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:telead_e_learning/controller/lesssons_controller.dart';
+import 'package:telead_e_learning/controller/ongoing_lesssons_controller.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_search_bar.dart';
 
 import '../widget/custom_button.dart';
 
-class Lessons extends StatelessWidget {
-  Lessons({super.key});
+class OngoingLessons extends StatelessWidget {
+  OngoingLessons({super.key});
 
   final List<CourseSection> courseSections = CourseData.generateDummyData();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LessonsController>(
-        init: LessonsController(),
+    return GetBuilder<OngoingLessonsController>(
+        init: OngoingLessonsController(),
         builder: (controller) {
           return Scaffold(
             appBar: const CustomAppBar(title: 'My Courses'),

@@ -9,20 +9,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.tabBar,
     this.color,
     this.trailing,
+    this.statusBarHeight,
   });
   final String? title;
   final Color? color;
   final bool? showSearchIcon;
   final PreferredSizeWidget? tabBar;
   final Widget? trailing;
+  final double? statusBarHeight;
   @override
   Size get preferredSize => Size.fromHeight(
-        tabBar == null ? Get.statusBarHeight : 120,
+        tabBar == null && statusBarHeight == null
+            ? Get.statusBarHeight
+            : statusBarHeight ?? 120,
       );
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        // toolbarHeight: 96,
+        // toolbarHeight: 226,
         backgroundColor: color,
         leading: const Padding(
           padding: EdgeInsets.only(left: 10),
@@ -32,15 +36,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         title: Text(title ?? ''),
-        actions: showSearchIcon == true && showSearchIcon != null
-            ? [
-                if (trailing != null) trailing ?? const SizedBox(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 24),
-                  child: Icon(Icons.search_rounded, size: 24),
-                )
-              ]
-            : null,
+        actions: [
+          if (trailing != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 24),
+              child: trailing ?? const SizedBox(),
+            ),
+          if (showSearchIcon == true && showSearchIcon != null)
+            const Padding(
+              padding: EdgeInsets.only(right: 24),
+              child: Icon(Icons.search_rounded, size: 24),
+            ),
+        ],
         bottom: tabBar);
   }
 }
