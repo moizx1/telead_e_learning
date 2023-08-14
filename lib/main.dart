@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:telead_e_learning/screen/add_new_card.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/all_category.dart';
 import 'package:telead_e_learning/screen/auth_options.dart';
@@ -13,6 +14,7 @@ import 'package:telead_e_learning/screen/create_new_password.dart';
 import 'package:telead_e_learning/screen/create_new_pin.dart';
 import 'package:telead_e_learning/screen/curriculum.dart';
 import 'package:telead_e_learning/screen/dashboard.dart';
+import 'package:telead_e_learning/screen/edit_profile.dart';
 import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/inbox.dart';
@@ -73,7 +75,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const Profile(),
+          home: const AddNewCard(),
         );
       },
     );

@@ -9,7 +9,6 @@ class OffersCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 180,
-      width: 350,
       decoration: BoxDecoration(
         color: const Color(0xff0961F5),
         image: const DecorationImage(
