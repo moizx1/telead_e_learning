@@ -1,34 +1,42 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:telead_e_learning/controller/Language_controller.dart';
+import 'package:telead_e_learning/dummy_data.dart';
+import 'package:telead_e_learning/widget/custom_app_bar.dart';
+import 'package:telead_e_learning/widget/language_radio_tile.dart';
 
 class Language extends StatelessWidget {
   const Language({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          'All Languages',
-          style: TextStyle(
-            color: Color(0xff202244),
-            fontWeight: FontWeight.w600,
-            fontSize: 18,
-          ),
-        ),
-        ListView.builder(
-          itemCount: 10,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Row(
+    return GetBuilder<LanguageController>(
+        init: LanguageController(),
+        builder: (controller) {
+          return Scaffold(
+            appBar: const CustomAppBar(title: 'Language'),
+            body: Column(
               children: [
-                Text('English (US)'),
-                Radio(value: value, groupValue: groupValue, onChanged: onChanged)
+                const Text(
+                  'All Languages',
+                  style: TextStyle(
+                    color: Color(0xff202244),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                  ),
+                ),
+                ListView.builder(
+                  itemCount: controller.list.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return LanguageRadioTile(
+                        language: controller.list[index],
+                        onChanged: controller.onRadioChange);
+                  },
+                )
               ],
-            );
-          },
-        )
-      ],
-    );
+            ),
+          );
+        });
   }
 }

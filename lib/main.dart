@@ -19,6 +19,7 @@ import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/inbox.dart';
 import 'package:telead_e_learning/screen/invite_friends.dart';
+import 'package:telead_e_learning/screen/language.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
 import 'package:telead_e_learning/screen/my_courses.dart';
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const InviteFriends(),
+          home: const Language(),
         );
       },
     );

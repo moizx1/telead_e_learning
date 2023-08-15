@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:telead_e_learning/model/notification_model.dart';
 
 class DummyData {
-  
+  static List languages = [
+    'English (US)',
+    'Arabic',
+    'Hindi',
+    'Bengali',
+    'Italian',
+    'Korean',
+    'Francais',
+    'Russian',
+    'Polish'
+  ];
+
   static List<NotificationModel> dummyData = [
     NotificationModel(
       icon: Icons.discount,
