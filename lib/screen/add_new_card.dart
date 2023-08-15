@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:telead_e_learning/widget/card_details_field.dart';
+import 'package:telead_e_learning/widget/atm_card_widget.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
+import 'package:telead_e_learning/widget/custom_button.dart';
+import 'package:telead_e_learning/widget/custom_text_field.dart';
 
 class AddNewCard extends StatelessWidget {
   const AddNewCard({super.key});
@@ -8,61 +12,56 @@ class AddNewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Add New Card'),
-      body: Center(
-        child: Container(
-          // margin: EdgeInsets.symmetric(horizontal: 26),
-          padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 18),
-          height: 180,
-          decoration: BoxDecoration(
-            color: const Color(0xff0961F5),
-            image: const DecorationImage(
-                image: AssetImage('assets/images/atm_card_background.png'),
-                fit: BoxFit.fill),
-            borderRadius: BorderRadius.circular(22),
-          ),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                '1234  5678  8765  0876',
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-              SizedBox(height: 6),
-              Row(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
                 children: [
-                  SizedBox(
-                    width: 25,
-                    child: Text(
-                      'Valid Thru',
-                      style: TextStyle(
-                          fontSize: 8,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+                  AtmCardWidget(
+                    cardNumber: '1234  5678  8765  0876',
+                    name: 'Timmy C. Hernandez',
+                    expiryMonth: 12,
+                    expiryYear: 28,
                   ),
-                  Text(
-                    '12/28',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  const SizedBox(height: 20),
+                  CardDetailsField(
+                    title: 'Card Name*',
+                    content: 'Belinda C. Cullen',
+                    isReadOnly: true,
+                  ),
+                  const SizedBox(height: 15),
+                  CardDetailsField(
+                    title: 'Card Number*',
+                    content: '****  **65  8765  3456',
+                    isReadOnly: true,
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CardDetailsField(
+                          title: 'Expiry Date*',
+                          content: '12/28',
+                          isReadOnly: true,
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: CardDetailsField(
+                            title: 'CVV*', content: '***', isReadOnly: true),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 8.5),
-              Text(
-                'Timmy C. Hernandez',
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            CustomButton(label: 'Add New Card'),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

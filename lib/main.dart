@@ -18,6 +18,7 @@ import 'package:telead_e_learning/screen/edit_profile.dart';
 import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/inbox.dart';
+import 'package:telead_e_learning/screen/invite_friends.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
 import 'package:telead_e_learning/screen/my_courses.dart';
@@ -28,6 +29,7 @@ import 'package:telead_e_learning/screen/popular_courses.dart';
 import 'package:telead_e_learning/screen/register.dart';
 import 'package:telead_e_learning/screen/reviews.dart';
 import 'package:telead_e_learning/screen/search.dart';
+import 'package:telead_e_learning/screen/security.dart';
 import 'package:telead_e_learning/screen/set_fingerprint.dart';
 import 'package:telead_e_learning/screen/single_course_details.dart';
 import 'package:telead_e_learning/screen/splash.dart';
@@ -75,7 +77,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const AddNewCard(),
+          home: const InviteFriends(),
         );
       },
     );

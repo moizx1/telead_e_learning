@@ -21,7 +21,7 @@ class ForgotPassword extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
+                 const Text(
                     textAlign: TextAlign.center,
                     'Select which contact details should we use to Reset Your Password',
                     style: TextStyle(
