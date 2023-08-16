@@ -103,7 +103,7 @@ class CoursesList extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 20),
                     scrollDirection: Axis.vertical,
                     itemCount: 7,
                     itemBuilder: (context, index) {

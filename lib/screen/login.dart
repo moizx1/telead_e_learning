@@ -69,8 +69,8 @@ class Login extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: controller.toggleCheckBox,
-                          child:
-                              CustomCheckBox(isChecked: controller.isChecked),
+                          child: CustomCheckBox.circle(
+                              isChecked: controller.isChecked),
                         ),
                         const SizedBox(width: 6),
                         const Text(

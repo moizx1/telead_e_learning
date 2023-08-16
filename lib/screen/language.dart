@@ -14,7 +14,10 @@ class Language extends StatelessWidget {
         init: LanguageController(),
         builder: (controller) {
           return Scaffold(
-            appBar: const CustomAppBar(title: 'Language'),
+            appBar: CustomAppBar(
+              title: 'Language',
+              onPressed: controller.onBackPressed,
+            ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
@@ -34,8 +37,8 @@ class Language extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return LanguageRadioTile(
-                        isChecked: controller.list[index]['isChecked'] as bool,
-                        language: controller.list[index]['language'].toString(),
+                        isChecked: controller.list[index].isChecked as bool,
+                        language: controller.list[index].language.toString(),
                         onChanged: (value) {
                           controller.onChange(value, index);
                         },

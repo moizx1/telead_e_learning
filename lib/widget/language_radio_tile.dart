@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telead_e_learning/widget/custom_checkbox.dart';
 
 class LanguageRadioTile extends StatelessWidget {
   const LanguageRadioTile(
@@ -23,26 +24,9 @@ class LanguageRadioTile extends StatelessWidget {
             fontSize: 15,
           ),
         ),
-        // Checkbox(value: false, onChanged: (onChanged) {}),
-        Checkbox(
-          activeColor: const Color(0xff167F71),
-          // focusColor: const Color(0xff167F71),
-          fillColor: isChecked == false
-              ? const MaterialStatePropertyAll(Color(0xffE8F1FF))
-              : null,
-          side: const BorderSide(
-            color: Color(0xffB4BDC4),
-            width: 2,
-          ),
+        Container(),
+        CustomCheckBox.square(isChecked: isChecked,onChanged: onChanged),
 
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          value: isChecked,
-          onChanged: onChanged,
-        ),
-        // Radio<String>(
-        //     value: value, groupValue: groupValue, onChanged: onChanged,)
       ],
     );
   }

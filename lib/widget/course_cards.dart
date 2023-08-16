@@ -80,7 +80,7 @@ class _CourseCard extends StatelessWidget {
         color: Colors.white,
       ),
       child: ConstrainedBox(
-        constraints: BoxConstraints.expand(height: 140),
+        constraints: const BoxConstraints.expand(height: 140),
         child: Row(
           children: [
             Container(
@@ -405,7 +405,7 @@ class _CompletedCourseCard extends StatelessWidget {
         Positioned(
           right: 20,
           top: -7.5,
-          child: CustomCheckBox(isChecked: true),
+          child: CustomCheckBox.circle(isChecked: true),
         ),
       ],
     );

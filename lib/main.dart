@@ -15,6 +15,7 @@ import 'package:telead_e_learning/screen/create_new_pin.dart';
 import 'package:telead_e_learning/screen/curriculum.dart';
 import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/edit_profile.dart';
+import 'package:telead_e_learning/screen/filter_courses.dart';
 import 'package:telead_e_learning/screen/forgot_password.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import 'package:telead_e_learning/screen/inbox.dart';
@@ -44,13 +45,14 @@ import 'package:telead_e_learning/widget/reset_password_card.dart';
 import 'package:telead_e_learning/widget/video_player_screen.dart';
 
 import 'controller/completed_lessons_controller.dart';
+import 'screen/certificate.dart';
 import 'screen/profile.dart';
 import 'screen/receipt.dart';
 
 void main() {
-  runApp(const GetMaterialApp(
-    home: MyApp(), // Your main widget
-  ));
+  runApp(
+    MyApp(), // Your main widget
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -60,7 +62,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) {
-        return MaterialApp(
+        return GetMaterialApp(
           title: 'Telead E-learning App',
           theme: ThemeData(
             colorScheme:
@@ -78,7 +80,20 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          home: const Language(),
+
+          initialRoute: '/',
+
+          getPages: [
+            GetPage(name: '/', page: () => Certificate()),
+            GetPage(name: '/login', page: () => Login()),
+            GetPage(name: '/regiter', page: () => Register()),
+            GetPage(name: '/dashboard', page: () => Dashboard()),
+            //GetPage( name:'/profile',page: () => Profile()),
+            // GetPage(name: '/language', page: () => Language()),
+            //GetPage( name:'/dashboard',page:()=>Dashboard()),
+          ],
+
+          // home: const Profile(),
         );
       },
     );
