@@ -15,26 +15,35 @@ class Language extends StatelessWidget {
         builder: (controller) {
           return Scaffold(
             appBar: const CustomAppBar(title: 'Language'),
-            body: Column(
-              children: [
-                const Text(
-                  'All Languages',
-                  style: TextStyle(
-                    color: Color(0xff202244),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'All Languages',
+                    style: TextStyle(
+                      color: Color(0xff202244),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                ListView.builder(
-                  itemCount: controller.list.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return LanguageRadioTile(
-                        language: controller.list[index],
-                        onChanged: controller.onRadioChange);
-                  },
-                )
-              ],
+                  ListView.builder(
+                    padding: const EdgeInsets.only(left: 18, top: 10),
+                    itemCount: controller.list.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return LanguageRadioTile(
+                        isChecked: controller.list[index]['isChecked'] as bool,
+                        language: controller.list[index]['language'].toString(),
+                        onChanged: (value) {
+                          controller.onChange(value, index);
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
           );
         });

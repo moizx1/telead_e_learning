@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:telead_e_learning/model/notification_model.dart';
 
 class DummyData {
-  static List languages = [
-    'English (US)',
-    'Arabic',
-    'Hindi',
-    'Bengali',
-    'Italian',
-    'Korean',
-    'Francais',
-    'Russian',
-    'Polish'
+  static List<Map<String, Object>> languages = [
+    {'language': 'English (US)', 'isChecked': true},
+    {'language': 'Arabic', 'isChecked': false},
+    {'language': 'Hindi', 'isChecked': false},
+    {'language': 'Bengali', 'isChecked': false},
+    {'language': 'Italian', 'isChecked': false},
+    {'language': 'Korean', 'isChecked': false},
+    {'language': 'Francais', 'isChecked': false},
+    {'language': 'Russian', 'isChecked': false},
+    {'language': 'Polish', 'isChecked': false},
   ];
 
   static List<NotificationModel> dummyData = [
