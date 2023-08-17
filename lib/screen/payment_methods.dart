@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:telead_e_learning/controller/payment_method_controller.dart';
@@ -6,6 +5,8 @@ import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_radio_tile.dart';
 import 'package:telead_e_learning/widget/mentor_course_card.dart';
+
+import '../widget/custom_alert.dart';
 
 class PaymentMethods extends StatelessWidget {
   const PaymentMethods({super.key});
@@ -82,7 +83,17 @@ class PaymentMethods extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        CustomButton(label: 'Enroll Course - \$55'),
+                        CustomButton(
+                          label: 'Enroll Course - \$55',
+                          onPress: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const CustomAlert.paymentSuccessfull();
+                              },
+                            );
+                          },
+                        ),
                         const SizedBox(height: 20),
                       ],
                     ),

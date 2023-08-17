@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:telead_e_learning/controller/security_controller.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
-import 'package:telead_e_learning/widget/custom_switch.dart';
 import 'package:telead_e_learning/widget/labelled_switch_row.dart';
 
 class Security extends StatelessWidget {
@@ -27,20 +26,23 @@ class Security extends StatelessWidget {
                   children: [
                     LabelledSwitchRow(
                       title: 'Remember Me',
-                      switchValue: controller.rememberMe,
-                      switchTap: controller.toggleRememberMe,
+                      switchValue: controller.rememberMe.value,
+                      switchTap: (newValue) => controller.handleToggle(
+                          controller.rememberMe, newValue),
                     ),
                     const SizedBox(height: 25),
                     LabelledSwitchRow(
                       title: 'Biometric ID',
-                      switchValue: controller.biometric,
-                      switchTap: controller.toggleBiometric,
+                      switchValue: controller.biometric.value,
+                      switchTap: (newValue) => controller.handleToggle(
+                          controller.biometric, newValue),
                     ),
                     const SizedBox(height: 25),
                     LabelledSwitchRow(
                       title: 'Face ID',
-                      switchValue: controller.faceId,
-                      switchTap: controller.toggleFaceId,
+                      switchValue: controller.faceId.value,
+                      switchTap: (newValue) =>
+                          controller.handleToggle(controller.faceId, newValue),
                     ),
                     const SizedBox(height: 35),
                     GestureDetector(

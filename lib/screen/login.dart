@@ -85,7 +85,7 @@ class Login extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.centerRight,
                             child: GestureDetector(
-                                onTap: () {},
+                                onTap: controller.onForgotTap,
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(
@@ -121,9 +121,11 @@ class Login extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: spacing * 5),
-                    const CustomRichText(
-                        text: 'Don\'t have an Account? ',
-                        buttonText: 'SIGN UP'),
+                    CustomRichText(
+                      text: 'Don\'t have an Account? ',
+                      buttonText: 'SIGN UP',
+                      onTap: controller.onSignUpTap,
+                    ),
                     SizedBox(height: spacing * 2),
                   ],
                 ),

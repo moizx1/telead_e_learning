@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_alert.dart';
@@ -70,7 +69,7 @@ class SetFingerprint extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return const CustomAlert();
+                            return CustomAlert.accountReady();
                           },
                         );
                       },

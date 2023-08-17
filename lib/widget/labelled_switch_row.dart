@@ -4,10 +4,14 @@ import 'custom_switch.dart';
 
 class LabelledSwitchRow extends StatelessWidget {
   const LabelledSwitchRow(
-      {super.key, this.title, this.switchValue, this.switchTap});
+      {super.key,
+      this.title,
+      this.switchValue,
+      this.switchTap,
+      this.switchEnabled = true});
   final String? title;
-  final bool? switchValue;
-  final VoidCallback? switchTap;
+  final bool? switchValue, switchEnabled;
+  final Function(bool)? switchTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,9 @@ class LabelledSwitchRow extends StatelessWidget {
         ),
         // Switch(value: true, onChanged: (onChanged) {}),
         CustomSwitch(
-          value: switchValue ?? false,
+          value: switchValue,
           onTap: switchTap,
+          enabled: switchEnabled,
         ),
       ],
     );

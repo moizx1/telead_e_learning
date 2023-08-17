@@ -17,7 +17,7 @@ class ForgotPasswordController extends GetxController {
     update();
   }
 
-  onResetTap() {
-    
+  onContinueTap() {
+    onSmsSelect ? Get.toNamed('/verifyPassword') : null;
   }
 }

@@ -1,21 +1,17 @@
 import 'package:get/get.dart';
 
 class SecurityController extends GetxController {
-  // bool? biometric, faceId;
-  bool rememberMe = false, biometric = false, faceId = false;
+  SwitchValue rememberMe=SwitchValue(value:false);
+  SwitchValue biometric=SwitchValue(value:false);
+  SwitchValue faceId=SwitchValue(value:false);
+  
 
-  toggleRememberMe() {
-    rememberMe = !rememberMe;
+  handleToggle(SwitchValue switchValue, bool newValue) {
+    switchValue.value = newValue;
     update();
   }
-
-  toggleBiometric() {
-    biometric = !biometric;
-    update();
-  }
-
-  toggleFaceId() {
-    faceId = !faceId;
-    update();
-  }
+}
+class SwitchValue {
+  bool? value;
+  SwitchValue({this.value});
 }

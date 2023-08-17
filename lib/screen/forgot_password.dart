@@ -21,7 +21,7 @@ class ForgotPassword extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                 const Text(
+                  const Text(
                     textAlign: TextAlign.center,
                     'Select which contact details should we use to Reset Your Password',
                     style: TextStyle(
@@ -47,7 +47,10 @@ class ForgotPassword extends StatelessWidget {
                     onTap: controller.toggleSmsSelect,
                   ),
                   SizedBox(height: 4.h),
-                  CustomButton(label: 'Continue'),
+                  CustomButton(
+                    label: 'Continue',
+                    onPress: controller.onContinueTap,
+                  ),
                   SizedBox(height: 7.h),
                 ],
               ),

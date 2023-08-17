@@ -24,6 +24,7 @@ import 'package:telead_e_learning/screen/language.dart';
 import 'package:telead_e_learning/screen/login.dart';
 import 'package:telead_e_learning/screen/mentor_details.dart';
 import 'package:telead_e_learning/screen/my_courses.dart';
+import 'package:telead_e_learning/screen/notification_settings.dart';
 import 'package:telead_e_learning/screen/notifications.dart';
 import 'package:telead_e_learning/screen/ongoing_lessons.dart';
 import 'package:telead_e_learning/screen/payment_methods.dart';
@@ -84,10 +85,12 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
 
           getPages: [
-            GetPage(name: '/', page: () => Certificate()),
+            GetPage(name: '/', page: () => AuthOptions()),
             GetPage(name: '/login', page: () => Login()),
             GetPage(name: '/regiter', page: () => Register()),
             GetPage(name: '/dashboard', page: () => Dashboard()),
+            GetPage(name: '/forgotPassword', page: () => ForgotPassword()),
+            GetPage(name: '/verifyPassword', page: () => VerifyPassword()),
             //GetPage( name:'/profile',page: () => Profile()),
             // GetPage(name: '/language', page: () => Language()),
             //GetPage( name:'/dashboard',page:()=>Dashboard()),

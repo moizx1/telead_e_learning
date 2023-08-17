@@ -21,6 +21,9 @@ class VerifyPasswordController extends GetxController {
     super.onInit();
   }
 
+  onVerifyTap() => Get.toNamed('/forgotPassword');
+  
+
   void resendCode() {
     //other code here
     secondsRemaining = 30;
