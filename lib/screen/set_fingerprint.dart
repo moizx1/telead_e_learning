@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_alert.dart';
 import '../controller/create_new_pin_controller.dart';
+import '../controller/set_fingerprint_controller.dart';
 import '../widget/custom_app_bar.dart';
 
 class SetFingerprint extends StatelessWidget {
@@ -11,8 +12,8 @@ class SetFingerprint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CreateNewPinController>(
-      init: CreateNewPinController(),
+    return GetBuilder<SetFingerprintController>(
+      init: SetFingerprintController(),
       builder: (controller) {
         return Scaffold(
           appBar: const CustomAppBar(
@@ -65,16 +66,19 @@ class SetFingerprint extends StatelessWidget {
                       width: 2.h,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return CustomAlert.accountReady();
-                          },
-                        );
-                      },
+                      onTap:
+                          // showDialog(
+                          //   context: context,
+                          //   builder: (context) {
+                          //     return CustomAlert.accountReady();
+                          //   },
+                          // );
+                          controller.onContinueTap,
                       child: CustomButton(
-                          label: 'Continue', width: 21.h, isTextCenter: false),
+                          label: 'Continue',
+                          width: 21.h,
+                          isTextCenter: false,
+                          onPress: controller.onContinueTap),
                     ),
                   ],
                 ),

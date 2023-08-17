@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:telead_e_learning/screen/add_profile_info.dart';
+import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import '../model/user_model.dart';
 
@@ -35,7 +36,7 @@ class LoginController extends GetxController {
   }
 
   onSignIn() async {
-    Get.offAll(() => const AddProfileInfo());
+    Get.offAll(() => const Dashboard());
     // try {
     //   UserModel userModel = UserModel(email: email, password: password);
 

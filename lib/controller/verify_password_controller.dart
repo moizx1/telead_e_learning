@@ -21,8 +21,7 @@ class VerifyPasswordController extends GetxController {
     super.onInit();
   }
 
-  onVerifyTap() => Get.toNamed('/forgotPassword');
-  
+  onVerifyTap() => Get.toNamed('/createPassword');
 
   void resendCode() {
     //other code here
@@ -33,7 +32,7 @@ class VerifyPasswordController extends GetxController {
 
   @override
   void onClose() {
-    timer?.cancel(); 
+    timer?.cancel();
     super.onClose();
   }
 }

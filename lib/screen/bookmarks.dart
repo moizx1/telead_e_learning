@@ -54,7 +54,7 @@ class Bookmarks extends StatelessWidget {
                             name: 'Advanced Graphics Design',
                             price: 28,
                             rating: 4.2,
-                            onTap: () {
+                            onBookmarkTap: () {
                               showModalBottomSheet(
                                 context: context,
                                 builder: (context) {

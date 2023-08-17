@@ -52,21 +52,28 @@ class Home extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Icon(
-                            Icons.notifications_none_rounded,
-                            size: 30,
+                          IconButton(
+                            onPressed: controller.onNotificationTap,
+                            icon: Icon(
+                              Icons.notifications_none_rounded,
+                              size: 30,
+                            ),
                           )
                         ],
                       ),
                       const SizedBox(height: 40),
-                      const CustomSearchBar(
+                      CustomSearchBar(
+                          onTap: controller.onSearchTap,
                           showLeadingIcon: true,
                           hintText: 'Search For...',
                           trailingIcon: Icons.filter_list),
                       const SizedBox(height: 30),
                       const OffersCard(percentage: 25),
                       const SizedBox(height: 30),
-                      const ListTitle(title: 'Categories'),
+                      ListTitle(
+                        title: 'Categories',
+                        onTap: controller.onAllCategoryTap,
+                      ),
                       Container(
                         // alignment: Alignment.center,
                         height: 40,
@@ -103,7 +110,9 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 25),
-                      const ListTitle(title: 'Popular Courses'),
+                      ListTitle(
+                          title: 'Popular Courses',
+                          onTap: controller.onPopularCoursesTap),
                       const SizedBox(height: 10),
                       CustomHorizontalList(
                         currentIndex: controller.currentSelectedCategory,
@@ -188,7 +197,10 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 25),
-                      const ListTitle(title: 'Top Mentor'),
+                      ListTitle(
+                        title: 'Top Mentor',
+                        onTap: controller.onTopMentorsTap,
+                      ),
                       const SizedBox(height: 15),
                       SizedBox(
                         height: 100,

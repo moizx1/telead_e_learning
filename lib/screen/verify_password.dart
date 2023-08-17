@@ -96,7 +96,10 @@ class VerifyPassword extends StatelessWidget {
                             ]),
                       ),
                 SizedBox(height: 8.h),
-                const CustomButton(label: 'Verify')
+                CustomButton(
+                  label: 'Verify',
+                  onPress: controller.onVerifyTap,
+                )
               ],
             ),
           ),

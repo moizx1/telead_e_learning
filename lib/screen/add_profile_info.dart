@@ -6,7 +6,6 @@ import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_text_field.dart';
 import 'package:telead_e_learning/widget/profile_image.dart';
-
 import '../widget/custom_dropdown_menu.dart';
 import '../widget/custom_phone_field.dart';
 
@@ -56,7 +55,7 @@ class AddProfileInfo extends StatelessWidget {
                   CustomPhoneField(onChanged: controller.onPhoneChanged),
                   CustomDropDown(onChanged: controller.onGenderChanged),
                   SizedBox(height: 5.h),
-                  CustomButton(label: 'Continue', onPress: controller.onSave),
+                  CustomButton(label: 'Continue', onPress: controller.onContinueTap),
                   SizedBox(height: 2.h)
                 ],
               ),

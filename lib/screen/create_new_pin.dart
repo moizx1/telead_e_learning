@@ -56,7 +56,7 @@ class CreateNewPin extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.h),
-                const CustomButton(label: 'Continue')
+                 CustomButton(label: 'Continue',onPress: controller.onContinueTap,)
               ],
             ),
           ),

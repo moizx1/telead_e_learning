@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:telead_e_learning/model/filter_course_model.dart';
 import 'package:telead_e_learning/screen/add_new_card.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/all_category.dart';
@@ -88,12 +89,26 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/', page: () => AuthOptions()),
             GetPage(name: '/login', page: () => Login()),
             GetPage(name: '/regiter', page: () => Register()),
+            GetPage(name: '/addProfileInfo', page: () => AddProfileInfo()),
+            GetPage(name: '/createNewPin', page: () => CreateNewPin()),
+            GetPage(name: '/setFingerprint', page: () => SetFingerprint()),
             GetPage(name: '/dashboard', page: () => Dashboard()),
+            GetPage(name: '/home', page: () => Home()),
+            GetPage(name: '/search', page: () => Search()),
+            GetPage(name: '/categories', page: () => AllCategory()),
+            GetPage(name: '/popularCourses', page: () => PopularCourses()),
+            GetPage(
+                name: '/singleCourseDetails',
+                page: () => SingleCourseDetails()),
+            GetPage(name: '/topMentors', page: () => TopMentors()),
+            GetPage(name: '/mentorDetails', page: () => MentorDetails()),
+            GetPage(name: '/notifications', page: () => Notifications()),
             GetPage(name: '/forgotPassword', page: () => ForgotPassword()),
             GetPage(name: '/verifyPassword', page: () => VerifyPassword()),
+            GetPage(name: '/createPassword', page: () => CreateNewPassword()),
             //GetPage( name:'/profile',page: () => Profile()),
             // GetPage(name: '/language', page: () => Language()),
-            //GetPage( name:'/dashboard',page:()=>Dashboard()),
+            GetPage(name: '/dashboard', page: () => Dashboard()),
           ],
 
           // home: const Profile(),

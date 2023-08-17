@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar(
-      {super.key, this.showLeadingIcon, this.hintText, this.trailingIcon});
+      {super.key, this.showLeadingIcon, this.hintText, this.trailingIcon, this.onTap});
   final bool? showLeadingIcon;
   final String? hintText;
   final IconData? trailingIcon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return SearchBar(
+      onTap: onTap,
       elevation: const MaterialStatePropertyAll(2.5),
       shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),

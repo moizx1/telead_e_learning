@@ -6,4 +6,11 @@ class HomeController extends GetxController {
     currentSelectedCategory = index;
     update();
   }
+
+  onNotificationTap() => Get.toNamed('/notifications');
+  onAllCategoryTap() => Get.toNamed('/categories');
+  onPopularCoursesTap() => Get.toNamed('/popularCourses');
+  onTopMentorsTap() => Get.toNamed('/topMentors');
+  onSearchTap() => Get.toNamed('/search');
+
 }

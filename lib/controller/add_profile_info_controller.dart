@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:telead_e_learning/model/user_model.dart';
-import 'package:telead_e_learning/screen/create_new_pin.dart';
 import 'package:telead_e_learning/screen/home.dart';
 
 class AddProfileInfoController extends GetxController {
@@ -12,6 +11,8 @@ class AddProfileInfoController extends GetxController {
   TextEditingController dateInput = TextEditingController();
   String get formattedDate => DateFormat('yyyy-MM-dd').format(selectedDate);
   UserModel userModel = UserModel();
+
+  onContinueTap() => Get.toNamed('/createNewPin');
 
   void selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -32,7 +33,6 @@ class AddProfileInfoController extends GetxController {
     userModel.email = value;
     update();
   }
-
 
   onFirstNameChanged(value) {
     userModel.firstName = value;

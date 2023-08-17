@@ -32,30 +32,31 @@ class RegisterController extends GetxController {
   }
 
   onSignUp() async {
-    try {
-      UserModel userModel = UserModel(email: email, password: password);
+    Get.toNamed('/addProfileInfo');
+    // try {
+    //   UserModel userModel = UserModel(email: email, password: password);
 
-      // Make the API request
-      final response = await http.post(
-        Uri.parse(
-            'http://rootpointersapp.rootpointers.net/api/Employee/UserSignUp'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode(userModel.toJson()),
-      );
+    //   // Make the API request
+    //   final response = await http.post(
+    //     Uri.parse(
+    //         'http://rootpointersapp.rootpointers.net/api/Employee/UserSignUp'),
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: json.encode(userModel.toJson()),
+    //   );
 
-      // Check if the request was successful (status code 200-299)
-      if (response.statusCode >= 200 && response.statusCode < 300) {
-        print('Signup successful!');
-        Get.off(() => Login());
-        // You can handle the successful response here
-      } else {
-        // Handle the error response
-        print('Signup failed with status code: ${response.statusCode}');
-        print('Response body: ${response.body}');
-      }
-    } catch (e) {
-      // Handle any exceptions that occur during the API request
-      print('Error during signup: $e');
-    }
+    //   // Check if the request was successful (status code 200-299)
+    //   if (response.statusCode >= 200 && response.statusCode < 300) {
+    //     print('Signup successful!');
+    //     Get.off(() => Login());
+    //     // You can handle the successful response here
+    //   } else {
+    //     // Handle the error response
+    //     print('Signup failed with status code: ${response.statusCode}');
+    //     print('Response body: ${response.body}');
+    //   }
+    // } catch (e) {
+    //   // Handle any exceptions that occur during the API request
+    //   print('Error during signup: $e');
+    // }
   }
 }

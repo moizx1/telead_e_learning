@@ -7,4 +7,6 @@ class PopularCoursesController extends GetxController {
     currentSelectedCategory = index;
     update();
   }
+
+  onCourseTap() => Get.toNamed('/singleCourseDetails');
 }

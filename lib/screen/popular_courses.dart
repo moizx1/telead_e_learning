@@ -38,8 +38,8 @@ class PopularCourses extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 28),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 28),
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: 7,
@@ -52,6 +52,7 @@ class PopularCourses extends StatelessWidget {
                             name: 'Advanced Graphics Design',
                             price: 28,
                             rating: 4.2,
+                            onCourseTap: controller.onCourseTap,
                           ),
                         );
                       },

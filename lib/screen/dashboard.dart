@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:telead_e_learning/controller/dashboard_controller.dart';
 import 'package:telead_e_learning/screen/courses_list.dart';
 import 'package:telead_e_learning/screen/home.dart';
+import 'package:telead_e_learning/screen/inbox.dart';
 import 'package:telead_e_learning/screen/my_courses.dart';
+import 'package:telead_e_learning/screen/profile.dart';
+import 'package:telead_e_learning/screen/transactions.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -41,6 +44,9 @@ class Dashboard extends StatelessWidget {
               children: [
                 Home(),
                 MyCourses(),
+                Inbox(),
+                Transactions(),
+                Profile(),
               ],
             ),
           );

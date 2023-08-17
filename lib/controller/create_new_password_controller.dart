@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
-class CreateNewPasswordController extends GetxController{
-    bool isTextVisible = true;
+
+class CreateNewPasswordController extends GetxController {
+  bool isTextVisible = true;
 
   void toggleVisibility() {
     isTextVisible = !isTextVisible;
     update();
   }
+
+  onContinueTap() => Get.toNamed('/login');
 }

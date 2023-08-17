@@ -58,7 +58,10 @@ class CreateNewPassword extends StatelessWidget {
                     onSuffixPress: controller.toggleVisibility,
                   ),
                   SizedBox(height: 5.h),
-                  const CustomButton(label: 'Continue'),
+                  CustomButton(
+                    label: 'Continue',
+                    onPress: controller.onContinueTap,
+                  ),
                   SizedBox(height: 7.h)
                 ],
               ),
