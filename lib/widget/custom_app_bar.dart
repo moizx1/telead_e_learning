@@ -30,10 +30,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
         // toolbarHeight: 226,
         backgroundColor: color,
-        leading:  Padding(
+        leading: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: IconButton(
-            onPressed: onPressed,
+            onPressed: onPressed ?? () => Get.back(),
             icon: const Icon(
               Icons.arrow_back_rounded,
               size: 28,

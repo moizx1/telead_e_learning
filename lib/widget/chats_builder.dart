@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'custom_listview_tile.dart';
 
 class ChatsBuilder extends StatelessWidget {
-  const ChatsBuilder({super.key});
-
+  const ChatsBuilder({super.key, this.onChatTap});
+  final VoidCallback? onChatTap;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -12,11 +12,12 @@ class ChatsBuilder extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 15,
       itemBuilder: (context, index) {
-        return CustomListviewTIle(
+        return CustomListviewTile(
+          onTap: onChatTap,
           title: 'Virginia M. Patterson',
           description: Text(
             'Hi, Good Evening Bro.!',
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xff545454),
               fontSize: 13,
               fontWeight: FontWeight.bold,
@@ -34,7 +35,7 @@ class ChatsBuilder extends StatelessWidget {
                 ),
                 child: Text(
                   '03',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
@@ -44,7 +45,7 @@ class ChatsBuilder extends StatelessWidget {
               const SizedBox(height: 2),
               Text(
                 '14:39',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xff545454),
                   fontWeight: FontWeight.bold,
                   fontSize: 11,

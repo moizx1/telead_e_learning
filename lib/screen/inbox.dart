@@ -24,8 +24,8 @@ class Inbox extends StatelessWidget {
                 CustomToggleButtons(
                   title1: 'Chat',
                   title2: 'Calls',
-                  onTap1: controller.onChatTap,
-                  onTap2: controller.onCallsTap,
+                  onTap1: controller.chatTabSelect,
+                  onTap2: controller.callsTabSelect,
                   currentSelectedCategory: controller.currentSelectedCategory,
                 ),
                 const SizedBox(height: 20),
@@ -36,7 +36,7 @@ class Inbox extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: controller.currentSelectedCategory == 0
-                        ? ChatsBuilder()
+                        ? ChatsBuilder(onChatTap: controller.onChatTap,)
                         : CallsBuilder(),
                   ),
                 ),
