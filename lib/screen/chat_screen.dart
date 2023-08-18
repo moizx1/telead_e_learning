@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
+
+import '../controller/chat_screen_controller.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({super.key});
@@ -12,6 +15,8 @@ class ChatScreen extends StatelessWidget {
         message: "Hello there!",
         time: "2020-06-17T10:29:35.000Z"),
     ChatMessage(
+        sender: false, message: "Hello", time: "2020-06-17T10:29:35.000Z"),
+    ChatMessage(
         sender: false,
         message: "Hi there! What are you doing today? Are you free?",
         time: "2020-06-16T10:29:35.000Z"),
@@ -20,172 +25,140 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'David Beckham',
-        trailing: Padding(
-          padding: EdgeInsets.only(right: 14),
-          child: Icon(Icons.local_phone_outlined, size: 24),
-        ),
-        showSearchIcon: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 24, right: 24, bottom: 20),
-        child: Column(
-          children: [
-            Expanded(
-              child: GroupedListView(
-                reverse: true,
-                elements: _messages,
-                groupBy: (element) => element.time,
-                groupComparator: (value1, value2) => value2.compareTo(value1),
-                itemComparator: (item1, item2) =>
-                    item1.time.compareTo(item2.time),
-                groupSeparatorBuilder: (value) {
-                  var date = DateFormat('dd. MMMM, EEEE')
-                      .format(DateTime.tryParse(value)!);
-                  return Align(
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 10, top: 10),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffE8F1FF),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          width: 2,
-                          color: const Color(0xffB4BDC4),
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Text(
-                        date,
-                        style: const TextStyle(
-                          color: Color(0xff202244),
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-                itemBuilder: (context, element) {
-                  return Align(
-                    alignment: element.sender
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-
-                    /// [ConstrainedBox] is used to provide the maximum width
-                    /// of any one chat bubble.
-                    child: ConstrainedBox(
-                      /// In this case, let's use 300.0, but
-                      /// you can use MediaQuery.of(context) and a percentage.
-                      constraints:
-                          const BoxConstraints(maxWidth: 300.0, minWidth: 130),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: BubbleMessage(
-                          message: element.message,
-                          sender: element.sender,
-                          time: element.time,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: const Color(0xffF5F9FF),
-                border: Border.all(
-                  color: const Color(0xffE8F1FF),
-                  width: 2,
+    return GetBuilder<ChatScreenController>(
+        init: ChatScreenController(),
+        builder: (controller) {
+          return Scaffold(
+            appBar: CustomAppBar(
+              title: 'David Beckham',
+              trailing: Padding(
+                padding: const EdgeInsets.only(right: 14),
+                child: IconButton(
+                  onPressed: controller.onCallTap,
+                  icon: Icon(Icons.local_phone_outlined, size: 24),
                 ),
               ),
-              child: Row(
+              showSearchIcon: true,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.only(left: 24, right: 24, bottom: 20),
+              child: Column(
                 children: [
                   Expanded(
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                        border: InputBorder.none,
-                        hintText: 'Message',
-                        hintStyle: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xffA0A4AB),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                    child: GroupedListView(
+                      reverse: true,
+                      elements: _messages,
+                      groupBy: (element) => element.time,
+                      // groupComparator: (value1, value2) => value2.compareTo(value1),
+                      itemComparator: (item1, item2) =>
+                          item1.time.compareTo(item2.time),
+                      groupSeparatorBuilder: (value) {
+                        var date = DateFormat('dd MMMM, EEEE')
+                            .format(DateTime.tryParse(value)!);
+                        return Align(
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 10, top: 10),
+                            decoration: BoxDecoration(
+                              color: const Color(0xffE8F1FF),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                width: 2,
+                                color: const Color(0xffB4BDC4),
+                              ),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 10,
+                            ),
+                            child: Text(
+                              date,
+                              style: const TextStyle(
+                                color: Color(0xff202244),
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      itemBuilder: (context, element) {
+                        return Align(
+                          alignment: element.sender
+                              ? Alignment.centerRight
+                              : Alignment.centerLeft,
+
+                          /// [ConstrainedBox] is used to provide the maximum width
+                          /// of any one chat bubble.
+                          child: ConstrainedBox(
+                            /// In this case, let's use 300.0, but
+                            /// you can use MediaQuery.of(context) and a percentage.
+                            constraints: const BoxConstraints(
+                                maxWidth: 300.0, minWidth: 130),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: BubbleMessage(
+                                message: element.message,
+                                sender: element.sender,
+                                time: element.time,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.attach_file),
                   ),
                   Container(
-                    height: 48,
-                    width: 48,
-                    decoration: const BoxDecoration(
-                      color: Color(0xff0961F5),
-                      shape: BoxShape.circle,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: const Color(0xffF5F9FF),
+                      border: Border.all(
+                        color: const Color(0xffE8F1FF),
+                        width: 2,
+                      ),
                     ),
-                    child: const Icon(
-                      Icons.mic_none_outlined,
-                      color: Colors.white,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 0),
+                              border: InputBorder.none,
+                              hintText: 'Message',
+                              hintStyle: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xffA0A4AB),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.attach_file),
+                        ),
+                        Container(
+                          height: 48,
+                          width: 48,
+                          decoration: const BoxDecoration(
+                            color: Color(0xff0961F5),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.mic_none_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 6),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-      // bottomNavigationBar: Padding(
-      //   padding:
-      //       // EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      //       EdgeInsets.all(15),
-      //   child: Container(
-      //     height: 45,
-      //     width: MediaQuery.of(context).size.width,
-      //     color: Colors.white,
-      //     child: Row(
-      //       children: [
-      //         Expanded(
-      //           child: const TextField(
-      //             decoration: InputDecoration(
-      //               hintText: "Message...",
-      //               hintStyle: TextStyle(color: Colors.blue),
-      //               border: OutlineInputBorder(
-      //                   borderSide: BorderSide(color: Colors.blue)),
-      //             ),
-      //           ),
-      //         ),
-      //         SizedBox(
-      //           width: 15,
-      //         ),
-      //         // Send Button
-      //         MaterialButton(
-      //           color: Colors.red,
-      //           onPressed: () {},
-      //           child: Icon(
-      //             Icons.send,
-      //             color: Colors.white,
-      //             size: 18,
-      //           ),
-      //           // backgroundColor: ColorConstant.lightBlueA100,
-      //           elevation: 0,
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-    );
+          );
+        });
   }
 }
 

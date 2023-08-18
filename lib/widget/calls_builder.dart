@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'custom_listview_tile.dart';
 
 class CallsBuilder extends StatelessWidget {
-  const CallsBuilder({super.key});
+  const CallsBuilder({super.key, this.onTrailingTap});
+  final VoidCallback? onTrailingTap;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,6 @@ class CallsBuilder extends StatelessWidget {
       itemCount: 15,
       itemBuilder: (context, index) {
         return CustomListviewTile(
-          
           title: 'Patricia D. Regalado',
           description: Row(
             children: [
@@ -34,7 +34,7 @@ class CallsBuilder extends StatelessWidget {
             ],
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: onTrailingTap,
             icon: const Icon(
               Icons.add_ic_call_outlined,
               color: Color(0xff0961F5),

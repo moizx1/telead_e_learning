@@ -36,8 +36,10 @@ class Inbox extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: controller.currentSelectedCategory == 0
-                        ? ChatsBuilder(onChatTap: controller.onChatTap,)
-                        : CallsBuilder(),
+                        ? ChatsBuilder(
+                            onChatTap: controller.onChatTap,
+                          )
+                        : CallsBuilder(onTrailingTap: controller.onCallTap),
                   ),
                 ),
               ],

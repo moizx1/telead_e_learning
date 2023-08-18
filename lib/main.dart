@@ -108,9 +108,10 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/createPassword', page: () => CreateNewPassword()),
             GetPage(name: '/chatScreen', page: () => ChatScreen()),
             GetPage(name: '/voiceCallScreen', page: () => VoiceCallScreen()),
+            GetPage(name: '/editProfile', page: () => EditProfile()),
 
             //GetPage( name:'/profile',page: () => Profile()),
-            // GetPage(name: '/language', page: () => Language()),
+            GetPage(name: '/language', page: () => Language()),
             GetPage(name: '/dashboard', page: () => Dashboard()),
           ],
 

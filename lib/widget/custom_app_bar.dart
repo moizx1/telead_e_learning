@@ -44,7 +44,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: [
           if (trailing != null)
             Padding(
-              padding: const EdgeInsets.only(right: 24),
+              padding: const EdgeInsets.only(right: 10),
               child: trailing ?? const SizedBox(),
             ),
           if (showSearchIcon == true && showSearchIcon != null)

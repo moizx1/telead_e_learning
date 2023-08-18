@@ -53,6 +53,8 @@ class Profile extends StatelessWidget {
                             child: Column(
                               children: [
                                 ProfileWidget(
+                                  onTap: () =>
+                                      controller.onTileTap(route: '/editProfile'),
                                   leading: Icons.person_3_outlined,
                                   title: 'Edit Profile',
                                 ),
@@ -70,7 +72,8 @@ class Profile extends StatelessWidget {
                                   title: 'Security',
                                 ),
                                 ProfileWidget(
-                                  onTap: controller.onNext,
+                                  onTap: () =>
+                                      controller.onTileTap(route: '/language'),
                                   leading: Icons.language_rounded,
                                   title: 'Language',
                                   trailing: Text(
