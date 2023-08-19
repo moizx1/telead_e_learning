@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/custom_horizontal_list.dart';
@@ -66,7 +67,7 @@ class Reviews extends StatelessWidget {
                     bottom: 7.5,
                     left: 10,
                     right: 10,
-                    child: CustomButton(label: 'Write a Review'),
+                    child: CustomButton(label: 'Write a Review',onPress: ()=>Get.toNamed('/writeReview')),
                   ),
                 ],
               ),

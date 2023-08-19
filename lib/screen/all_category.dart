@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widget/custom_app_bar.dart';
 import '../widget/custom_search_bar.dart';
@@ -9,7 +10,7 @@ class AllCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'All Categories'),
+      appBar: const CustomAppBar(title: 'All Categories'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 28.0),
         child: Column(
@@ -20,19 +21,23 @@ class AllCategory extends StatelessWidget {
             ),
             Expanded(
               child: GridView.builder(
-                  padding:const  EdgeInsets.only(top: 20),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemCount: 8,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
+                padding: const EdgeInsets.only(top: 20),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: 8,
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () => Get.toNamed('/coursesList'),
+                    child: Card(
                       color: const Color(0xffE8F1FF),
                       child: Center(child: Text('$index')),
-                    );
-                  }),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

@@ -11,4 +11,6 @@ class SingleCourseController extends GetxController {
     selectedIndex = 1;
     update();
   }
+
+  onCourseTap()=>Get.toNamed('/curriculum');
 }

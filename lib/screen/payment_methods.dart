@@ -72,11 +72,11 @@ class PaymentMethods extends StatelessWidget {
                         Container(
                           height: 62,
                           width: 62,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xff0961F5),
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.add_rounded,
                             color: Colors.white,
                             size: 46,

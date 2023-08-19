@@ -229,20 +229,24 @@ class CompletedLessons extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 2,
-                        child: Container(
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffE8F1FF),
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                              width: 1,
-                              color: const Color(0xffB4BDC4),
+                        child: InkWell(
+                        onTap: controller.onCertificateTap,
+
+                          child: Container(
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: const Color(0xffE8F1FF),
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(
+                                width: 1,
+                                color: const Color(0xffB4BDC4),
+                              ),
                             ),
-                          ),
-                          child: const Icon(
-                            Icons.bookmark,
-                            color: Color(0xff167F71),
-                            size: 32,
+                            child: const Icon(
+                              Icons.bookmark,
+                              color: Color(0xff167F71),
+                              size: 32,
+                            ),
                           ),
                         ),
                       ),

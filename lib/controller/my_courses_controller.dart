@@ -11,4 +11,7 @@ class MyCoursesController extends GetxController {
     currentSelectedCategory = 1;
     update();
   }
+
+  onCompletedCourseTap()=>Get.toNamed('/completedLessons');
+  onOngoingCourseTap()=>Get.toNamed('/ongoingLessons');
 }

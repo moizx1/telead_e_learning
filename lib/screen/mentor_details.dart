@@ -20,7 +20,8 @@ class MentorDetails extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: const EdgeInsets.only(left: 10, right: 10, bottom: 30),
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, bottom: 30),
                     color: Colors.white,
                     child: Column(
                       children: [
@@ -165,8 +166,8 @@ class MentorDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 17.5),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 17.5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.white,
@@ -191,10 +192,10 @@ class MentorDetails extends StatelessWidget {
                         Container(
                           height: 52,
                           decoration: BoxDecoration(
-                            color: Color(0xffE8F1FF),
+                            color: const Color(0xffE8F1FF),
                             border: Border.all(
                               width: 3,
-                              color: Color(0xffE8F1FF),
+                              color: const Color(0xffE8F1FF),
                             ),
                           ),
                           child: Row(
@@ -206,11 +207,11 @@ class MentorDetails extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.center,
                                     color: controller.selectedIndex == 0
-                                        ? Color(0xffF5F9FF)
-                                        : Color(0xffE8F1FF),
+                                        ? const Color(0xffF5F9FF)
+                                        : const Color(0xffE8F1FF),
                                     child: Text(
                                       'Courses',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xff202244),
@@ -225,12 +226,12 @@ class MentorDetails extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.center,
                                     color: controller.selectedIndex == 1
-                                        ? Color(0xffF5F9FF)
-                                        : Color(0xffE8F1FF),
+                                        ? const Color(0xffF5F9FF)
+                                        : const Color(0xffE8F1FF),
                                     child: Text(
                                       textAlign: TextAlign.center,
                                       'Rating',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xff202244),
@@ -244,15 +245,19 @@ class MentorDetails extends StatelessWidget {
                         ),
                         controller.selectedIndex == 1
                             ? ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: 4,
                                 itemBuilder: (context, index) {
                                   return Column(
                                     children: [
-                                      Padding(
-                                          padding: EdgeInsets.all(20),
-                                          child: ReviewCard()),
+                                      InkWell(
+                                        onTap: controller.onReviewTap,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20),
+                                          child: ReviewCard(),
+                                        ),
+                                      ),
                                       if (index < 3)
                                         const Divider(
                                           color: Color(0xffE8F1FF),
@@ -262,9 +267,9 @@ class MentorDetails extends StatelessWidget {
                                 },
                               )
                             : ListView.builder(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 15),
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: 4,
                                 itemBuilder: (context, index) {

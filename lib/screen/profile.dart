@@ -53,21 +53,27 @@ class Profile extends StatelessWidget {
                             child: Column(
                               children: [
                                 ProfileWidget(
-                                  onTap: () =>
-                                      controller.onTileTap(route: '/editProfile'),
+                                  onTap: () => controller.onTileTap(
+                                      route: '/editProfile'),
                                   leading: Icons.person_3_outlined,
                                   title: 'Edit Profile',
                                 ),
                                 ProfileWidget(
+                                  onTap: () => controller.onTileTap(
+                                      route: '/paymentOptions'),
                                   leading:
                                       Icons.account_balance_wallet_outlined,
                                   title: 'Payment option',
                                 ),
                                 ProfileWidget(
+                                  onTap: () => controller.onTileTap(
+                                      route: '/notificationSettings'),
                                   leading: Icons.notifications_none,
                                   title: 'Notifications',
                                 ),
                                 ProfileWidget(
+                                  onTap: () =>
+                                      controller.onTileTap(route: '/security'),
                                   leading: Icons.security_rounded,
                                   title: 'Security',
                                 ),
@@ -78,7 +84,7 @@ class Profile extends StatelessWidget {
                                   title: 'Language',
                                   trailing: Text(
                                     'English (US)',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Color(0xff0961F5),
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -90,6 +96,8 @@ class Profile extends StatelessWidget {
                                   title: 'Dark Mode',
                                 ),
                                 ProfileWidget(
+                                  onTap: () =>
+                                      controller.onTileTap(route: '/terms'),
                                   leading: Icons.person_3_outlined,
                                   title: 'Terms & Conditons',
                                 ),
@@ -98,6 +106,8 @@ class Profile extends StatelessWidget {
                                   title: 'Help Center',
                                 ),
                                 ProfileWidget(
+                                  onTap: () => controller.onTileTap(
+                                      route: '/inviteFriends'),
                                   leading: Icons.mail_outline_rounded,
                                   title: 'Invite Friends',
                                 ),

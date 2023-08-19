@@ -11,4 +11,6 @@ class MentorDetailsController extends GetxController {
     selectedIndex = 1;
     update();
   }
+
+  onReviewTap() => Get.toNamed('/reviews');
 }

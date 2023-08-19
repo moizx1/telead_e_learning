@@ -29,6 +29,7 @@ import 'package:telead_e_learning/screen/notification_settings.dart';
 import 'package:telead_e_learning/screen/notifications.dart';
 import 'package:telead_e_learning/screen/ongoing_lessons.dart';
 import 'package:telead_e_learning/screen/payment_methods.dart';
+import 'package:telead_e_learning/screen/payment_options.dart';
 import 'package:telead_e_learning/screen/popular_courses.dart';
 import 'package:telead_e_learning/screen/register.dart';
 import 'package:telead_e_learning/screen/reviews.dart';
@@ -38,6 +39,7 @@ import 'package:telead_e_learning/screen/set_fingerprint.dart';
 import 'package:telead_e_learning/screen/single_course_details.dart';
 import 'package:telead_e_learning/screen/splash.dart';
 import 'package:telead_e_learning/screen/start.dart';
+import 'package:telead_e_learning/screen/terms_conditions.dart';
 import 'package:telead_e_learning/screen/top_mentors.dart';
 import 'package:telead_e_learning/screen/transactions.dart';
 import 'package:telead_e_learning/screen/verify_password.dart';
@@ -101,7 +103,10 @@ class MyApp extends StatelessWidget {
                 name: '/singleCourseDetails',
                 page: () => SingleCourseDetails()),
             GetPage(name: '/topMentors', page: () => TopMentors()),
-            GetPage(name: '/mentorDetails', page: () => MentorDetails()),
+            GetPage(name: '/topMentors', page: () => TopMentors()),
+            GetPage(name: '/completedLessons', page: () => CompletedLessons()),
+            GetPage(name: '/certificate', page: () => Certificate()),
+            GetPage(name: '/ongoingLessons', page: () => OngoingLessons()),
             GetPage(name: '/notifications', page: () => Notifications()),
             GetPage(name: '/forgotPassword', page: () => ForgotPassword()),
             GetPage(name: '/verifyPassword', page: () => VerifyPassword()),
@@ -109,10 +114,23 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/chatScreen', page: () => ChatScreen()),
             GetPage(name: '/voiceCallScreen', page: () => VoiceCallScreen()),
             GetPage(name: '/editProfile', page: () => EditProfile()),
-
+            GetPage(name: '/paymentMethods', page: () => PaymentMethods()),
+            GetPage(name: '/paymentOptions', page: () => PaymentOptions()),
+            GetPage(name: '/addNewCard', page: () => AddNewCard()),
+            GetPage(
+                name: '/notificationSettings',
+                page: () => NotificationSettings()),
+            GetPage(name: '/security', page: () => Security()),
+            GetPage(name: '/receipt', page: () => Receipt()),
+            GetPage(name: '/coursesList', page: () => CoursesList()),
+            GetPage(name: '/curriculum', page: () => Curriculum()),
+            GetPage(name: '/reviews', page: () => Reviews()),
+            GetPage(name: '/writeReview', page: () => WriteReview()),
             //GetPage( name:'/profile',page: () => Profile()),
             GetPage(name: '/language', page: () => Language()),
             GetPage(name: '/dashboard', page: () => Dashboard()),
+            GetPage(name: '/terms', page: () => TermsConditions()),
+            GetPage(name: '/inviteFriends', page: () => InviteFriends()),
           ],
 
           // home: const Profile(),

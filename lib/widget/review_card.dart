@@ -21,12 +21,12 @@ class ReviewCard extends StatelessWidget {
           Container(
             height: 46,
             width: 46,
-            decoration: BoxDecoration(
+            decoration:const  BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.black,
             ),
           ),
-          SizedBox(
+         const  SizedBox(
             width: 12,
           ),
           Expanded(
@@ -43,7 +43,7 @@ class ReviewCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         softWrap: false,
                         'William S. Cunninghammmmm',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
                           color: Color(0xff202244),
@@ -55,10 +55,10 @@ class ReviewCard extends StatelessWidget {
                       height: 26,
                       width: 60,
                       decoration: BoxDecoration(
-                        color: Color(0xffE8F1FF),
+                        color: const Color(0xffE8F1FF),
                         borderRadius: BorderRadius.circular(13),
                         border:
-                            Border.all(color: Color(0xff4D81E5), width: 2.5),
+                            Border.all(color:const  Color(0xff4D81E5), width: 2.5),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +101,7 @@ class ReviewCard extends StatelessWidget {
                         SizedBox(width: 7.5),
                         Text(
                           '578',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Color(0xff202244),
@@ -112,7 +112,7 @@ class ReviewCard extends StatelessWidget {
                     SizedBox(width: 30),
                     Text(
                       '2 Weeks Ago',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: Color(0xff202244),

@@ -8,6 +8,8 @@ import 'package:telead_e_learning/widget/review_card.dart';
 import '../controller/single_course_controller.dart';
 
 class SingleCourseDetails extends StatelessWidget {
+  const SingleCourseDetails({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SingleCourseController>(
@@ -15,7 +17,7 @@ class SingleCourseDetails extends StatelessWidget {
       builder: (controller) {
         return MaterialApp(
           home: Scaffold(
-            backgroundColor: Color.fromARGB(255, 237, 244, 255),
+            backgroundColor: const Color.fromARGB(255, 237, 244, 255),
             body: CustomScrollView(
               slivers: [
                 SliverAppBar(
@@ -163,10 +165,10 @@ class SingleCourseDetails extends StatelessWidget {
                                         Container(
                                           height: 52,
                                           decoration: BoxDecoration(
-                                            color: Color(0xffE8F1FF),
+                                            color: const Color(0xffE8F1FF),
                                             border: Border.all(
                                               width: 3,
-                                              color: Color(0xffE8F1FF),
+                                              color: const Color(0xffE8F1FF),
                                             ),
                                           ),
                                           child: Row(
@@ -181,8 +183,10 @@ class SingleCourseDetails extends StatelessWidget {
                                                     color: controller
                                                                 .selectedIndex ==
                                                             0
-                                                        ? Color(0xffF5F9FF)
-                                                        : Color(0xffE8F1FF),
+                                                        ? const Color(
+                                                            0xffF5F9FF)
+                                                        : const Color(
+                                                            0xffE8F1FF),
                                                     child: Text(
                                                       'About',
                                                       style: TextStyle(
@@ -205,8 +209,10 @@ class SingleCourseDetails extends StatelessWidget {
                                                     color: controller
                                                                 .selectedIndex ==
                                                             1
-                                                        ? Color(0xffF5F9FF)
-                                                        : Color(0xffE8F1FF),
+                                                        ? const Color(
+                                                            0xffF5F9FF)
+                                                        : const Color(
+                                                            0xffE8F1FF),
                                                     child: Text(
                                                       textAlign:
                                                           TextAlign.center,
@@ -279,61 +285,46 @@ class SingleCourseDetails extends StatelessWidget {
                                                       ],
                                                     ),
                                                   ),
-                                                  Container(
+                                                  SizedBox(
                                                     height: 170,
                                                     child: ListView.builder(
-                                                      padding: EdgeInsets.only(
-                                                          top: 15,
-                                                          left: 25,
-                                                          right: 25),
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 15,
+                                                              left: 25,
+                                                              right: 25),
                                                       itemCount: 2,
                                                       itemBuilder:
                                                           (context, index) {
                                                         return Column(
                                                           children: [
-                                                            ListTile(
-                                                              leading:
-                                                                  Container(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .center,
-                                                                      height:
-                                                                          46,
-                                                                      width: 46,
-                                                                      decoration: BoxDecoration(
-                                                                          color: Color(
-                                                                              0xffF5F9FF),
-                                                                          border: Border.all(
-                                                                              color: Color(
-                                                                                  0xffE8F1FF),
-                                                                              width:
-                                                                                  1.5),
-                                                                          shape: BoxShape
-                                                                              .circle),
-                                                                      child:
-                                                                          Text(
-                                                                        '01',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              14,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                          color:
-                                                                              Color(0xff202244),
-                                                                        ),
-                                                                      ),),
-                                                              title: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    'Why Using Graphic De..',
+                                                            InkWell(
+                                                              onTap: controller
+                                                                  .onCourseTap,
+                                                              child: ListTile(
+                                                                leading:
+                                                                    Container(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  height: 46,
+                                                                  width: 46,
+                                                                  decoration: BoxDecoration(
+                                                                      color: const Color(
+                                                                          0xffF5F9FF),
+                                                                      border: Border.all(
+                                                                          color: const Color(
+                                                                              0xffE8F1FF),
+                                                                          width:
+                                                                              1.5),
+                                                                      shape: BoxShape
+                                                                          .circle),
+                                                                  child: Text(
+                                                                    '01',
                                                                     style:
                                                                         TextStyle(
                                                                       fontSize:
-                                                                          16,
+                                                                          14,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
@@ -341,36 +332,54 @@ class SingleCourseDetails extends StatelessWidget {
                                                                           0xff202244),
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
-                                                                      height:
-                                                                          3),
-                                                                  Text(
-                                                                    '15 Mins',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          13,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      color: Color(
-                                                                          0xff545454),
+                                                                ),
+                                                                title: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Why Using Graphic De..',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        color: Color(
+                                                                            0xff202244),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                    SizedBox(
+                                                                        height:
+                                                                            3),
+                                                                    Text(
+                                                                      '15 Mins',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            13,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        color: Color(
+                                                                            0xff545454),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                minLeadingWidth:
+                                                                    0,
+                                                                trailing: Icon(
+                                                                  Icons
+                                                                      .play_circle_fill_rounded,
+                                                                  color: Color(
+                                                                      0xff0961F5),
+                                                                  size: 18,
+                                                                ),
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(0),
                                                               ),
-                                                              minLeadingWidth:
-                                                                  0,
-                                                              trailing: Icon(
-                                                                Icons
-                                                                    .play_circle_fill_rounded,
-                                                                color: Color(
-                                                                    0xff0961F5),
-                                                                size: 18,
-                                                              ),
-                                                              contentPadding:
-                                                                  EdgeInsets
-                                                                      .all(0),
                                                             ),
                                                             const SizedBox(
                                                                 height: 7.5),

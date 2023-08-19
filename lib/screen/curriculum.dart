@@ -21,192 +21,182 @@ class Curriculum extends StatelessWidget {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: courseSections.length - 1,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '${courseSections[index].title} - ',
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                'Introduction',
-                                                style: const TextStyle(
-                                                  color: Color(0xff0961F5),
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            '25 Mins',
-                                            style: TextStyle(
-                                              color: Color(0xff0961F5),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    ListView.builder(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemCount:
-                                          courseSections[index].videos.length,
-                                      itemBuilder: (context, newIndex) {
-                                        return Column(
+                  Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: courseSections.length - 1,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
                                           children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(15),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        alignment:
-                                                            Alignment.center,
-                                                        height: 46,
-                                                        width: 46,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: const Color(
-                                                              0xffF5F9FF),
-                                                          border: Border.all(
-                                                            width: 2,
-                                                            color: const Color(
-                                                                0xffE8F1FF),
-                                                          ),
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Text(
-                                                          (newIndex + 1)
-                                                              .toString(),
-                                                          style: const TextStyle(
-                                                              color: Color(
-                                                                  0xff202244),
-                                                              fontSize: 14,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(width: 10),
-                                                      Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            courseSections[
-                                                                    index]
-                                                                .videos[
-                                                                    newIndex]
-                                                                .title,
-                                                            style:
-                                                                const TextStyle(
-                                                              color: Color(
-                                                                  0xff202244),
-                                                              fontSize: 16,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            courseSections[
-                                                                    index]
-                                                                .videos[
-                                                                    newIndex]
-                                                                .time,
-                                                            style:
-                                                                const TextStyle(
-                                                              color: Color(
-                                                                  0xff545454),
-                                                              fontSize: 13,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  InkWell(
-                                                    onTap:
-                                                        controller.onLessonTap,
-                                                    child: Container(
+                                            Text(
+                                              '${courseSections[index].title} - ',
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              'Introduction',
+                                              style: const TextStyle(
+                                                color: Color(0xff0961F5),
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          '25 Mins',
+                                          style: TextStyle(
+                                            color: Color(0xff0961F5),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        courseSections[index].videos.length,
+                                    itemBuilder: (context, newIndex) {
+                                      return Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(15),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Container(
                                                       alignment:
                                                           Alignment.center,
-                                                      height: 28,
-                                                      width: 28,
-                                                      decoration:
-                                                          const BoxDecoration(
-                                                              color: Color(
-                                                                  0xff0961F5),
-                                                              shape: BoxShape
-                                                                  .circle),
-                                                      child: const Icon(
-                                                          Icons.arrow_right,
-                                                          color: Colors.white,
-                                                          size: 18),
+                                                      height: 46,
+                                                      width: 46,
+                                                      decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xffF5F9FF),
+                                                        border: Border.all(
+                                                          width: 2,
+                                                          color: const Color(
+                                                              0xffE8F1FF),
+                                                        ),
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Text(
+                                                        (newIndex + 1)
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            color: Color(
+                                                                0xff202244),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
                                                     ),
+                                                    const SizedBox(width: 10),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          courseSections[index]
+                                                              .videos[newIndex]
+                                                              .title,
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Color(
+                                                                0xff202244),
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          courseSections[index]
+                                                              .videos[newIndex]
+                                                              .time,
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Color(
+                                                                0xff545454),
+                                                            fontSize: 13,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                InkWell(
+                                                  onTap: controller.onLessonTap,
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    height: 28,
+                                                    width: 28,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                            color: Color(
+                                                                0xff0961F5),
+                                                            shape: BoxShape
+                                                                .circle),
+                                                    child: const Icon(
+                                                        Icons.arrow_right,
+                                                        color: Colors.white,
+                                                        size: 18),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                            const Divider(
-                                                color: Color(0xffE8F1FF)),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
+                                          ),
+                                          const Divider(
+                                              color: Color(0xffE8F1FF)),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   Positioned(
                     bottom: -10,
                     left: 4,
                     right: 4,
-                    child: CustomButton(label: 'Write a Review'),
+                    child: CustomButton(
+                      label: "Enroll Course - \$55",
+                      onPress: controller.onEnrollTap,
+                    ),
                   ),
                 ],
               ),

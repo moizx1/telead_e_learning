@@ -41,17 +41,23 @@ class MyCourses extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           child: controller.currentSelectedCategory == 0
-                              ? CourseCards.CompletedCourseCard(
-                                  category: 'Graphics Design',
-                                  name: 'Graphic Design Advanced',
-                                  rating: 4.3)
-                              : CourseCards.OngoingCourseCard(
-                                  category: 'Graphics Design',
-                                  name: 'Graphic Design Advanced',
-                                  rating: 4.2,
-                                  remaining: 78,
-                                  total: 124,
-                                ),
+                              ? InkWell(
+                                onTap: controller.onCompletedCourseTap,
+                                child: CourseCards.CompletedCourseCard(
+                                    category: 'Graphics Design',
+                                    name: 'Graphic Design Advanced',
+                                    rating: 4.3),
+                              )
+                              : InkWell(
+                                onTap: controller.onOngoingCourseTap,
+                                child: CourseCards.OngoingCourseCard(
+                                    category: 'Graphics Design',
+                                    name: 'Graphic Design Advanced',
+                                    rating: 4.2,
+                                    remaining: 78,
+                                    total: 124,
+                                  ),
+                              ),
                         );
                       },
                     ),
