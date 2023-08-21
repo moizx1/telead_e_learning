@@ -1,13 +1,17 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import '../model/user_model.dart';
+import '../services/AuthProvider.dart';
 
 class LoginController extends GetxController {
+  AuthProvider authProvider = AuthProvider();
+
   String? email, password;
   bool isTextVisible = true;
   bool isChecked = false;
@@ -33,6 +37,19 @@ class LoginController extends GetxController {
   onPasswordChanged(value) {
     password = value;
     update();
+  }
+
+  googleSignIn() async {
+    try {
+      UserCredential user = await authProvider.signInWithGoogle();
+      await authProvider.firestore
+          .collection('users')
+          .doc(user.user?.email)
+          .set({'email': user.user?.email});
+      Get.toNamed('/inbox');
+    } catch (e) {
+      print(e);
+    }
   }
 
   onSignIn() async {

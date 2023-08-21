@@ -97,13 +97,13 @@ class Register extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: spacing * 3),
-                    const Row(
+                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(),
-                        AuthButton(iconPath: 'assets/images/googleLogo.png'),
+                        const SizedBox(),
+                        InkWell(onTap: controller.googleSignUp, child: AuthButton(iconPath: 'assets/images/googleLogo.png')),
                         AuthButton(iconPath: 'assets/images/appleLogo.png'),
-                        SizedBox(),
+                        const SizedBox(),
                       ],
                     ),
                     SizedBox(height: spacing * 5),

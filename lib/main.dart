@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,7 +54,9 @@ import 'screen/certificate.dart';
 import 'screen/profile.dart';
 import 'screen/receipt.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MyApp(), // Your main widget
   );
@@ -112,6 +115,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/verifyPassword', page: () => VerifyPassword()),
             GetPage(name: '/createPassword', page: () => CreateNewPassword()),
             GetPage(name: '/chatScreen', page: () => ChatScreen()),
+            GetPage(name: '/inbox', page: () => Inbox()),
             GetPage(name: '/voiceCallScreen', page: () => VoiceCallScreen()),
             GetPage(name: '/editProfile', page: () => EditProfile()),
             GetPage(name: '/paymentMethods', page: () => PaymentMethods()),

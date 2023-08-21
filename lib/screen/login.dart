@@ -111,13 +111,16 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: spacing * 3),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(),
-                        AuthButton(iconPath: 'assets/images/googleLogo.png'),
+                        const SizedBox(),
+                        InkWell(
+                            onTap: controller.googleSignIn,
+                            child: AuthButton(
+                                iconPath: 'assets/images/googleLogo.png')),
                         AuthButton(iconPath: 'assets/images/appleLogo.png'),
-                        SizedBox(),
+                        const SizedBox(),
                       ],
                     ),
                     SizedBox(height: spacing * 5),

@@ -37,9 +37,9 @@ class Inbox extends StatelessWidget {
                     ),
                     child: controller.currentSelectedCategory == 0
                         ? ChatsBuilder(
-                            onChatTap: controller.onChatTap,
+                            onChatTap: controller.onChatTap,loggedInUser: controller.loggedInUser.toString(),
                           )
-                        : CallsBuilder(onTrailingTap: controller.onCallTap),
+                        : CallsBuilder(onTrailingTap: controller.onCallTap, ),
                   ),
                 ),
               ],

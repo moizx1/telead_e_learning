@@ -23,6 +23,11 @@ dependencies:
   grouped_list: ^5.1.2
   chewie: ^1.7.0
   video_player: ^2.7.0
+  firebase_core: ^2.14.0
+  cloud_firestore: ^4.8.2
+  firebase_auth: ^4.6.3
+  firebase_storage: ^11.2.4
+  google_sign_in: ^6.1.4
 
 dev_dependencies:
   flutter_test:

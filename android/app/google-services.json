@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "228485774974",
+    "project_id": "telead-e-learning",
+    "storage_bucket": "telead-e-learning.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228485774974:android:8bb7df59ab27886726222f",
+        "android_client_info": {
+          "package_name": "com.example.telead_e_learning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228485774974-f91mjds8natndg75rjq1o2a34jojbl26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFqUZPA6qZ-E5YR825AqNWyXDiZqmPFBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228485774974-f91mjds8natndg75rjq1o2a34jojbl26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
