@@ -8,6 +8,7 @@ import 'package:telead_e_learning/model/user_model.dart';
 import 'package:telead_e_learning/services/AuthProvider.dart';
 
 import '../screen/login.dart';
+import '../services/FirebaseApi.dart';
 
 class RegisterController extends GetxController {
   AuthProvider authProvider = AuthProvider();
@@ -38,11 +39,11 @@ class RegisterController extends GetxController {
   googleSignUp() async {
     try {
       UserCredential user = await authProvider.signInWithGoogle();
-
+      final fcmToken = await FirebaseApi().initNotifications();
       await authProvider.firestore
           .collection('users')
           .doc(user.user?.email)
-          .set({'email': user.user?.email});
+          .set({'email': user.user?.email, 'fcmToken': fcmToken});
       Get.toNamed('/chatScreen');
 
       // update();

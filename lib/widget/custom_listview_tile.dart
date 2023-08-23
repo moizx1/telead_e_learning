@@ -6,10 +6,8 @@ class CustomListviewTile extends StatelessWidget {
       required this.title,
       required this.description,
       this.leading,
-      this.trailing,
-      this.onTap});
+      this.trailing,});
   final String title;
-  final VoidCallback? onTap;
   final Widget? leading, trailing;
   final Widget description;
 
@@ -17,48 +15,45 @@ class CustomListviewTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 2,
-                          color: const Color(0xffE8F1FF),
-                        ),
-                        shape: BoxShape.circle,
-                        color: Colors.black,
+        Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: const Color(0xffE8F1FF),
                       ),
-                      child: leading,
+                      shape: BoxShape.circle,
+                      color: Colors.black,
                     ),
-                    const SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(
-                            color: Color(0xff202244),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    child: leading,
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          color: Color(0xff202244),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
-                        description,
-                      ],
-                    ),
-                  ],
-                ),
-                trailing ?? const SizedBox(),
-              ],
-            ),
+                      ),
+                      description,
+                    ],
+                  ),
+                ],
+              ),
+              trailing ?? const SizedBox(),
+            ],
           ),
         ),
         const Divider(color: Color(0xffE8F1FF)),

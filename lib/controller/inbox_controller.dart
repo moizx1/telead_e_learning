@@ -1,14 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class InboxController extends GetxController {
   int? currentSelectedCategory = 0;
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  Stream<QuerySnapshot<Object?>>? stream;
+
   User? loggedInUser;
 
   @override
-  void onInit() async {
+  void onInit() {
     getCurrentUser();
+    // print(loggedInUser?.email);
+    stream = firestore
+        .collection('chats')
+        .where('participants', arrayContains: loggedInUser?.email)
+        .orderBy('time', descending: true)
+        .snapshots();
     super.onInit();
   }
 
@@ -17,7 +27,6 @@ class InboxController extends GetxController {
       final user = auth.currentUser;
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser?.email);
       }
     } catch (e) {
       print(e);
@@ -34,6 +43,7 @@ class InboxController extends GetxController {
     update();
   }
 
-  void onChatTap() => Get.toNamed('/chatScreen');
+  void onChatTap(String chatId) =>
+      Get.toNamed('/chatScreen', arguments: [chatId, loggedInUser]);
   void onCallTap() => Get.toNamed('/voiceCallScreen');
 }

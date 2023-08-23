@@ -6,8 +6,8 @@ import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/custom_button.dart';
 import 'package:telead_e_learning/widget/labelled_switch_row.dart';
 
-class NotificationSettings extends StatelessWidget {
-  const NotificationSettings({super.key});
+class CustomNotificationSettings extends StatelessWidget {
+  const CustomNotificationSettings({super.key});
 
   @override
   Widget build(BuildContext context) {

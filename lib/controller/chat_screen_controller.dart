@@ -4,44 +4,45 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatScreenController extends GetxController {
+  ChatScreenController({this.loggedInUser, this.chatId});
+  final String? chatId;
+  final User? loggedInUser;
+
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController messageTextController = TextEditingController();
-  late User loggedInUser;
+  Stream<QuerySnapshot<Object?>>? stream;
+  String? messageString;
 
   @override
-  void onInit() async {
-    getCurrentUser();
+  void onInit() {
+    stream = firestore
+        .collection('chats')
+        .doc(chatId)
+        .collection('messages')
+        .orderBy('time', descending: true)
+        .snapshots();
     super.onInit();
   }
 
-  onSendPress() {
-    print(messageTextController.text);
-    if (messageTextController != null) {
-      firestore.collection('messages').add(
+  onSendPress() async {
+    messageString = messageTextController.text;
+    messageTextController.clear();
+
+    await firestore.collection('chats').doc(chatId).collection('messages').add(
+      {
+        'chatId': chatId,
+        'message': messageString,
+        'sender': loggedInUser?.email,
+        'time': DateTime.now()
+      },
+    ).then((_) async {
+      await firestore.collection('chats').doc(chatId).update(
         {
-          'message': messageTextController.text,
-          'sender': loggedInUser.email,
-          'time': DateTime.now()
+          'lastMessage': messageString,
+          'time': DateTime.now(),
         },
       );
-      messageTextController.clear();
-    }
-  }
-
-  // getMessageStream() {
-  //   return firestore.collection('messages').snapshots();
-  // }
-  void getCurrentUser() {
-    try {
-      final user = auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-        print(loggedInUser.email);
-      }
-    } catch (e) {
-      print(e);
-    }
+    });
   }
 
   onCallTap() => Get.toNamed('/voiceCallScreen');

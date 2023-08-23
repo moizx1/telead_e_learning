@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,6 +49,8 @@ import 'package:telead_e_learning/screen/transactions.dart';
 import 'package:telead_e_learning/screen/verify_password.dart';
 import 'package:telead_e_learning/screen/voice_call_screen.dart';
 import 'package:telead_e_learning/screen/write_review.dart';
+import 'package:telead_e_learning/services/AuthProvider.dart';
+import 'package:telead_e_learning/services/FirebaseApi.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 import 'package:telead_e_learning/widget/video_player_screen.dart';
 
@@ -123,7 +128,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/addNewCard', page: () => AddNewCard()),
             GetPage(
                 name: '/notificationSettings',
-                page: () => NotificationSettings()),
+                page: () => CustomNotificationSettings()),
             GetPage(name: '/security', page: () => Security()),
             GetPage(name: '/receipt', page: () => Receipt()),
             GetPage(name: '/coursesList', page: () => CoursesList()),

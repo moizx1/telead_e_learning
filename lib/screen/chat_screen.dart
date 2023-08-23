@@ -9,12 +9,12 @@ import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import '../controller/chat_screen_controller.dart';
 
 class ChatScreen extends StatelessWidget {
-  ChatScreen({super.key});
+  var args = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ChatScreenController>(
-        init: ChatScreenController(),
+        init: ChatScreenController(chatId: args[0], loggedInUser: args[1]),
         builder: (controller) {
           return Scaffold(
             appBar: CustomAppBar(
@@ -34,10 +34,8 @@ class ChatScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: MessageStream(
-                      stream: controller.firestore
-                          .collection('messages')
-                          .snapshots(),
-                      loggedInUser: controller.loggedInUser.email,
+                      stream: controller.stream,
+                      loggedInUser: controller.loggedInUser?.email,
                     ),
                   ),
                   Container(
@@ -102,9 +100,9 @@ class ChatScreen extends StatelessWidget {
 }
 
 class MessageStream extends StatelessWidget {
-  MessageStream({super.key, required this.stream, this.loggedInUser});
+  const MessageStream({super.key, required this.stream, this.loggedInUser});
   final String? loggedInUser;
-  Stream<QuerySnapshot<Object?>>? stream;
+  final Stream<QuerySnapshot<Object?>>? stream;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -142,7 +140,6 @@ class MessageStream extends StatelessWidget {
           itemComparator: (item1, item2) => item2.time.compareTo(item1.time),
           groupSeparatorBuilder: (value) {
             var date = value;
-            // var date = '${dateTime.month}/${dateTime.day}/${dateTime.year}';
             return Align(
               child: Container(
                 margin: const EdgeInsets.only(bottom: 10, top: 10),
@@ -194,21 +191,6 @@ class MessageStream extends StatelessWidget {
             );
           },
         );
-        // return Expanded(
-        //   child: ListView(
-        //     scrollDirection: Axis.vertical,
-        //     children: snapshot.data!.docs
-        //         .map((DocumentSnapshot document) {
-        //           Map<String, dynamic> data =
-        //               document.data()! as Map<String, dynamic>;
-        //           final messageText = data['text'];
-        //           final messageSender = data['sender'];
-        //           return Text('$messageText from $messageSender');
-        //         })
-        //         .toList()
-        //         .cast(),
-        //   ),
-        // );
       },
     );
   }
@@ -285,5 +267,3 @@ class BubbleMessage extends StatelessWidget {
     );
   }
 }
-
-
