@@ -13,7 +13,6 @@ class InboxController extends GetxController {
   @override
   void onInit() {
     getCurrentUser();
-    // print(loggedInUser?.email);
     stream = firestore
         .collection('chats')
         .where('participants', arrayContains: loggedInUser?.email)
@@ -43,7 +42,7 @@ class InboxController extends GetxController {
     update();
   }
 
-  void onChatTap(String chatId) =>
-      Get.toNamed('/chatScreen', arguments: [chatId, loggedInUser]);
+  void onChatTap(String chatId, String receiverId) =>
+      Get.toNamed('/chatScreen', arguments: [chatId, receiverId, loggedInUser]);
   void onCallTap() => Get.toNamed('/voiceCallScreen');
 }

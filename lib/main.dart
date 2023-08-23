@@ -59,9 +59,12 @@ import 'screen/certificate.dart';
 import 'screen/profile.dart';
 import 'screen/receipt.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // await FirebaseApi().initNotifications();
   runApp(
     MyApp(), // Your main widget
   );
@@ -92,6 +95,8 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+
+          navigatorKey: navigatorKey,
 
           initialRoute: '/',
 

@@ -14,7 +14,8 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ChatScreenController>(
-        init: ChatScreenController(chatId: args[0], loggedInUser: args[1]),
+        init: ChatScreenController(
+            chatId: args[0], receiverId: args[1], loggedInUser: args[2]),
         builder: (controller) {
           return Scaffold(
             appBar: CustomAppBar(

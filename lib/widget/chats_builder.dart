@@ -6,7 +6,7 @@ import 'custom_listview_tile.dart';
 class ChatsBuilder extends StatelessWidget {
   ChatsBuilder(
       {super.key, required this.onChatTap, this.stream, this.loggedInUser});
-  final Function(String) onChatTap;
+  final Function(String, String) onChatTap;
   final String? loggedInUser;
   final Stream<QuerySnapshot<Object?>>? stream;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -15,11 +15,7 @@ class ChatsBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       // padding: const EdgeInsets.only(top: 10),
-      stream: firestore
-          .collection('chats')
-          .where('participants', arrayContains: 'abdulmuizpm@gmail.com')
-          // .orderBy('time', descending: true)
-          .snapshots(),
+      stream: stream,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(
@@ -55,7 +51,12 @@ class ChatsBuilder extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                onChatTap(chats[index].chatId);
+                onChatTap(
+                  chats[index].chatId,
+                  chats[index]
+                      .participants
+                      .firstWhere((element) => element != loggedInUser),
+                );
               },
               child: CustomListviewTile(
                 title: chats[index]
