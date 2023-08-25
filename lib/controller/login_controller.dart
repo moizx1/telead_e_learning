@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -6,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/home.dart';
+import '../constants/app_keys.dart';
 import '../constants/constant.dart';
 import '../model/user_model.dart';
 import '../services/AuthProvider.dart';
@@ -15,8 +17,7 @@ class LoginController extends GetxController {
   AuthProvider authProvider = AuthProvider();
   final storage = GetStorage();
   String? email, password;
-  bool isTextVisible = true;
-  bool isChecked = false;
+  bool isTextVisible = true, isChecked = false, isLoading = false;
 
   void toggleVisibility() {
     isTextVisible = !isTextVisible;
@@ -43,18 +44,29 @@ class LoginController extends GetxController {
 
   googleSignIn() async {
     try {
+      isLoading = true;
+      update();
       UserCredential userCredential = await authProvider.signInWithGoogle();
       await FirebaseApi().initNotifications();
       await authProvider.firestore
           .collection('users')
           .doc(userCredential.user?.email)
-          .set({
-        'email': userCredential.user?.email,
-        'fcmToken': fcmToken
-      }).then((_) {
-        currentUser = userCredential.user;
-      });
-      Get.toNamed('/inbox');
+          .set({'email': userCredential.user?.email, 'fcmToken': fcmToken});
+      currentUser = userCredential.user;
+      DocumentSnapshot userDoc = await authProvider.firestore
+          .collection('users')
+          .doc(currentUser?.email)
+          .get();
+      UserModel signInModel = UserModel(
+        email: userDoc['email'],
+        fcmToken: userDoc['fcmToken'],
+      );
+      getStorage.write(AppKeys.userData, signInModel.toJson());
+      userData = signInModel;
+      print(userData?.email);
+      isLoading = false;
+      update();
+      Get.toNamed('/dashboard');
     } catch (e) {
       print(e);
     }

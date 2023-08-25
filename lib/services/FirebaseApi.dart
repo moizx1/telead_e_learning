@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
@@ -47,7 +46,7 @@ class FirebaseApi {
             _androidChanel.id,
             _androidChanel.name,
             channelDescription: _androidChanel.description,
-            icon: '@drawable/ic_launcher',
+            icon: '@drawable/launch_background',
           ),
         ),
         payload: jsonEncode(message.toMap()),
@@ -57,7 +56,8 @@ class FirebaseApi {
 
   Future initLocalNotifications() async {
     const iOS = DarwinInitializationSettings();
-    const android = AndroidInitializationSettings('@drawable/ic_launcher');
+    const android =
+        AndroidInitializationSettings('@drawable/launch_background');
     const settings = InitializationSettings(android: android, iOS: iOS);
 
     await _localNotifications.initialize(

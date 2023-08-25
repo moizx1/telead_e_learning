@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:telead_e_learning/constants/constant.dart';
 import 'package:telead_e_learning/model/filter_course_model.dart';
 import 'package:telead_e_learning/screen/add_new_card.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
@@ -64,6 +65,7 @@ final navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await getStorage.initStorage;
   // await FirebaseApi().initNotifications();
   runApp(
     MyApp(), // Your main widget
@@ -101,7 +103,9 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
 
           getPages: [
-            GetPage(name: '/', page: () => AuthOptions()),
+            GetPage(name: '/', page: () => SplashScreen()),
+            GetPage(name: '/start', page: () => StartScreen()),
+            GetPage(name: '/authOptions', page: () => AuthOptions()),
             GetPage(name: '/login', page: () => Login()),
             GetPage(name: '/regiter', page: () => Register()),
             GetPage(name: '/addProfileInfo', page: () => AddProfileInfo()),

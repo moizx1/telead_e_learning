@@ -1,12 +1,21 @@
 import 'package:get/get.dart';
-import 'package:telead_e_learning/screen/start.dart';
+import '../constants/constant.dart';
 
 class SplashController extends GetxController {
   @override
-  void onInit() {
-    Future.delayed(const Duration(seconds: 1), () {
-      Get.off(() => const StartScreen());
-    });
+  void onInit() async {
+    // Future.delayed(const Duration(seconds: 1), () async {});
+    try {
+      userData = await readUserData();
+      print(userData);
+      if (userData != null) {
+        Get.offNamed('/dashboard');
+      } else {
+        Get.offNamed('/start');
+      }
+    } catch (e) {
+      print(e);
+    }
     super.onInit();
   }
 }

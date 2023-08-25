@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:telead_e_learning/services/AuthProvider.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/profile_widget.dart';
 
+import '../constants/app_keys.dart';
+import '../constants/constant.dart';
 import '../controller/profile_controller.dart';
 
 class Profile extends StatelessWidget {
@@ -110,6 +113,19 @@ class Profile extends StatelessWidget {
                                       route: '/inviteFriends'),
                                   leading: Icons.mail_outline_rounded,
                                   title: 'Invite Friends',
+                                ),
+                                ProfileWidget(
+                                  onTap: () async {
+                                    try {
+                                      await AuthProvider().firebaseSignOut();
+                                      getStorage.remove(AppKeys.userData);
+                                      Get.offNamed('/authOptions');
+                                    } catch (e) {
+                                      print(e);
+                                    }
+                                  },
+                                  leading: Icons.logout_rounded,
+                                  title: 'Log Out',
                                 ),
                               ],
                             ),
