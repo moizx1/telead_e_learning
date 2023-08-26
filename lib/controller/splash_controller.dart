@@ -7,7 +7,6 @@ class SplashController extends GetxController {
     // Future.delayed(const Duration(seconds: 1), () async {});
     try {
       userData = await readUserData();
-      print(userData);
       if (userData != null) {
         Get.offNamed('/dashboard');
       } else {

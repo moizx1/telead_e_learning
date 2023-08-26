@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:telead_e_learning/constants/constant.dart';
@@ -11,10 +12,12 @@ class FirebaseApi {
     'high_importance_channel',
     'High Importance Notifications',
     description: 'This channel is used for important notifications',
-    importance: Importance.defaultImportance,
+    importance: Importance.high,
+    playSound: true,
   );
 
-  final _localNotifications = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   void handleMessage(RemoteMessage? message) {
     if (message == null) return;
@@ -23,12 +26,6 @@ class FirebaseApi {
   }
 
   Future initPushNotifications() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
-      alert: true,
-      badge: true,
-      sound: true,
-    ); //for ios
     FirebaseMessaging.instance.getInitialMessage().then(
         handleMessage); //responsible for performing an action through notification when application is in terminated state
     FirebaseMessaging.onMessageOpenedApp.listen(
@@ -37,7 +34,7 @@ class FirebaseApi {
     FirebaseMessaging.onMessage.listen((message) {
       final notification = message.notification;
       if (notification == null) return;
-      _localNotifications.show(
+      flutterLocalNotificationsPlugin.show(
         notification.hashCode,
         notification.title,
         notification.body,
@@ -55,21 +52,50 @@ class FirebaseApi {
   }
 
   Future initLocalNotifications() async {
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    ); //for ios
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(_androidChanel);
+
     const iOS = DarwinInitializationSettings();
     const android =
         AndroidInitializationSettings('@drawable/launch_background');
     const settings = InitializationSettings(android: android, iOS: iOS);
 
-    await _localNotifications.initialize(
+    await flutterLocalNotificationsPlugin.initialize(
       settings,
       onDidReceiveNotificationResponse: (payload) {
-        final message = RemoteMessage.fromMap(jsonDecode(payload.toString()));
-        handleMessage(message);
+        // final message = RemoteMessage.fromMap(jsonDecode(payload.toString()));
+        // handleMessage(message);
       },
     );
-    final platform = _localNotifications.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
-    await platform?.createNotificationChannel(_androidChanel);
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                _androidChanel.id,
+                _androidChanel.name,
+                channelDescription: _androidChanel.description,
+                color: Colors.blue,
+                playSound: true,
+                icon: '@mipmap/ic_launcher',
+                showWhen: true,
+              ),
+            ));
+      }
+    });
   }
 
   Future<void> handleBackgroundMessage(RemoteMessage message) async {}

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -44,8 +45,10 @@ class LoginController extends GetxController {
 
   googleSignIn() async {
     try {
-      isLoading = true;
-      update();
+      Get.dialog(
+        const Center(child: CircularProgressIndicator()),
+        barrierDismissible: false,
+      );
       UserCredential userCredential = await authProvider.signInWithGoogle();
       await FirebaseApi().initNotifications();
       await authProvider.firestore
@@ -63,10 +66,7 @@ class LoginController extends GetxController {
       );
       getStorage.write(AppKeys.userData, signInModel.toJson());
       userData = signInModel;
-      print(userData?.email);
-      isLoading = false;
-      update();
-      Get.toNamed('/dashboard');
+      Get.offAllNamed('/dashboard');
     } catch (e) {
       print(e);
     }

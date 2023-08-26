@@ -66,7 +66,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await getStorage.initStorage;
-  // await FirebaseApi().initNotifications();
+  await FirebaseApi().initNotifications();
   runApp(
     MyApp(), // Your main widget
   );
