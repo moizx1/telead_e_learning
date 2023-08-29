@@ -1,56 +1,57 @@
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class BubbleMessage extends StatelessWidget {
   const BubbleMessage(
       {super.key,
-      this.message,
-      this.imageUrl,
-      required this.isDownloading,
+      this.content,
       required this.messageType,
       required this.sender,
       required this.isMe,
       required this.time,
-      required this.downloadImage});
+      required this.downloadImage,
+      required this.downloadVideo,
+      });
 
   final String sender, messageType;
-  final String? message, imageUrl;
+  final String? content;
   final DateTime time;
-  final bool isMe, isDownloading;
-  final Function(String image) downloadImage;
+  final bool isMe;
+  final Function(String image) downloadImage, downloadVideo;
   @override
   Widget build(BuildContext context) {
     /// Size the [BubbleMessage] class to the intrinsic width of the child.
     return IntrinsicWidth(
       /// Replace [Card] with your [Bubble] class.
-      child: messageType == 'Image'
+      child: messageType == 'IMAGE' || messageType == 'VIDEO'
           ? Stack(
               alignment: Alignment.topRight,
               children: [
-                Container(
-                  height: 180,
-                  width: 180,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      width: 6,
-                      color: isMe ? Colors.blueGrey : const Color(0xff4C935E),
+                InkWell(
+                  onTap: () => Get.toNamed('/viewImage', arguments: content),
+                  child: Container(
+                    height: 180,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        width: 6,
+                        color: isMe ? Colors.blueGrey : const Color(0xff4C935E),
+                      ),
+                    ),
+                    child: Image.network(
+                      content ?? '',
+                      width: 180,
+                      height: 180,
                     ),
                   ),
-                  child: Image.network(
-                    imageUrl ?? '',
-                    width: 180,
-                    height: 180,
-                  ),
                 ),
-                isDownloading
-                    ? CircularProgressIndicator()
-                    : IconButton(
-                        onPressed: ()=>downloadImage(imageUrl ?? ''),
-                        icon: const Icon(Icons.download_for_offline_rounded),
-                      ),
+                IconButton(
+                  onPressed: () => messageType=='Video'? downloadVideo(content ?? '') :downloadImage(content ?? ''),
+                  icon: const Icon(Icons.download_for_offline_rounded),
+                ),
               ],
             )
           : Container(
@@ -80,7 +81,7 @@ class BubbleMessage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Text(
-                      message ?? '',
+                      content ?? '',
                       style: TextStyle(
                         fontSize: 14,
                         color: isMe ? const Color(0xff202244) : Colors.white,

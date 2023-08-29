@@ -54,7 +54,7 @@ import 'package:telead_e_learning/services/AuthProvider.dart';
 import 'package:telead_e_learning/services/FirebaseNotification.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 import 'package:telead_e_learning/widget/video_player_screen.dart';
-
+import 'package:telead_e_learning/widget/view_image.dart';
 import 'controller/completed_lessons_controller.dart';
 import 'screen/certificate.dart';
 import 'screen/profile.dart';
@@ -128,6 +128,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/verifyPassword', page: () => VerifyPassword()),
             GetPage(name: '/createPassword', page: () => CreateNewPassword()),
             GetPage(name: '/chatScreen', page: () => ChatScreen()),
+            GetPage(name: '/viewImage', page: () => ViewImage()),
             GetPage(name: '/inbox', page: () => Inbox()),
             GetPage(name: '/voiceCallScreen', page: () => VoiceCallScreen()),
             GetPage(name: '/editProfile', page: () => EditProfile()),

@@ -81,7 +81,7 @@ class FirebaseNotification {
   }
 
   Future<void> initNotifications() async {
-    initPushNotifications();
-    initLocalNotifications();
+    await initPushNotifications();
+    await initLocalNotifications();
   }
 }

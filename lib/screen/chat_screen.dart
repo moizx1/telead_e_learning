@@ -40,13 +40,15 @@ class ChatScreen extends StatelessWidget {
                     child: MessageStream(
                       stream: controller.stream,
                       loggedInUser: controller.loggedInUser?.email,
-                      isDownloading: controller.isDownloading,
                       downloadImage: controller.downloadImage,
+                      downloadVideo: controller.downloadVideo,
                     ),
                   ),
                   Container(
-                    height: controller.selectImages &&
-                            controller.imageFileList.isNotEmpty
+                    height: (controller.selectImages &&
+                                controller.imageFileList.isNotEmpty) ||
+                            (controller.selectVideo &&
+                                controller.pickedVideo != null)
                         ? 200
                         : 60,
                     decoration: BoxDecoration(
@@ -105,6 +107,42 @@ class ChatScreen extends StatelessWidget {
                                     },
                                   ),
                           ),
+                        if (controller.selectVideo &&
+                            controller.pickedVideo != null)
+                          SizedBox(
+                            height: 120,
+                            child: controller.isUploading
+                                ? const Center(
+                                    child: CircularProgressIndicator())
+                                : Stack(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          color: Colors.blueGrey,
+                                        ),
+                                        child: Image.file(
+                                          File(controller.pickedVideo!.path),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: -10,
+                                        right: 0,
+                                        child: IconButton(
+                                          onPressed: controller.removeVideos,
+                                          icon: const Icon(
+                                            Icons.cancel_rounded,
+                                            color: Colors.red,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                          ),
                         Row(
                           children: [
                             Expanded(
@@ -151,7 +189,10 @@ class ChatScreen extends StatelessWidget {
                                             ),
                                           ),
                                           IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Get.back();
+                                              controller.pickVideos();
+                                            },
                                             icon: const Icon(
                                               Icons.video_collection,
                                               size: 34,
@@ -167,7 +208,7 @@ class ChatScreen extends StatelessWidget {
                             ),
                             const SizedBox(width: 10),
                             InkWell(
-                              onTap: controller.onSendPress,
+                              onTap: controller.onSend,
                               child: Container(
                                 height: 48,
                                 width: 48,
@@ -194,5 +235,3 @@ class ChatScreen extends StatelessWidget {
         });
   }
 }
-
-

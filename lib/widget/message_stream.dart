@@ -12,13 +12,12 @@ class MessageStream extends StatelessWidget {
     super.key,
     required this.stream,
     this.loggedInUser,
-    required this.isDownloading,
     required this.downloadImage,
+    required this.downloadVideo,
   });
   final String? loggedInUser;
-  final bool isDownloading;
   final Stream<QuerySnapshot<Object?>>? stream;
-  final Function(String imageUrl) downloadImage;
+  final Function(String imageUrl) downloadImage, downloadVideo;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -33,8 +32,7 @@ class MessageStream extends StatelessWidget {
         final messages = snapshot.data!.docs;
         List<BubbleMessage> messageBubbles = [];
         for (var message in messages) {
-          final String? messageText = message['message'];
-          final String? imageUrl = message['imageUrl'];
+          final String? content = message['content'];
           final String messageSender = message['sender'];
           final String messageType = message['type'];
           final messageTime = message['time'].toDate();
@@ -42,14 +40,13 @@ class MessageStream extends StatelessWidget {
           final currentUser = loggedInUser;
 
           final messageBubble = BubbleMessage(
-            imageUrl: imageUrl,
+            content: content,
             messageType: messageType,
             sender: messageSender,
-            message: messageText,
             isMe: currentUser == messageSender,
             time: messageTime,
-            isDownloading: isDownloading,
             downloadImage: downloadImage,
+            downloadVideo: downloadVideo,
           );
           messageBubbles.add(messageBubble);
         }
@@ -104,13 +101,12 @@ class MessageStream extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: BubbleMessage(
                     messageType: element.messageType,
-                    message: element.message,
-                    imageUrl: element.imageUrl,
+                    content: element.content,
                     sender: element.sender,
                     isMe: element.isMe,
                     time: element.time,
-                    isDownloading: isDownloading,
-                    downloadImage: downloadImage,
+                    downloadImage: element.downloadImage,
+                    downloadVideo: element.downloadVideo,
                   ),
                 ),
               ),
