@@ -51,7 +51,7 @@ import 'package:telead_e_learning/screen/verify_password.dart';
 import 'package:telead_e_learning/screen/voice_call_screen.dart';
 import 'package:telead_e_learning/screen/write_review.dart';
 import 'package:telead_e_learning/services/AuthProvider.dart';
-import 'package:telead_e_learning/services/FirebaseApi.dart';
+import 'package:telead_e_learning/services/FirebaseNotification.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 import 'package:telead_e_learning/widget/video_player_screen.dart';
 
@@ -66,7 +66,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await getStorage.initStorage;
-  await FirebaseApi().initNotifications();
   runApp(
     MyApp(), // Your main widget
   );

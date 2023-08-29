@@ -118,6 +118,7 @@ class Profile extends StatelessWidget {
                                   onTap: () async {
                                     try {
                                       await AuthProvider().firebaseSignOut();
+                                      await AuthProvider().googleSignOut();
                                       getStorage.remove(AppKeys.userData);
                                       Get.offNamed('/authOptions');
                                     } catch (e) {

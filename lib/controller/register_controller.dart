@@ -9,7 +9,7 @@ import 'package:telead_e_learning/services/AuthProvider.dart';
 
 import '../constants/constant.dart';
 import '../screen/login.dart';
-import '../services/FirebaseApi.dart';
+import '../services/FirebaseNotification.dart';
 
 class RegisterController extends GetxController {
   AuthProvider authProvider = AuthProvider();
@@ -40,7 +40,7 @@ class RegisterController extends GetxController {
   googleSignUp() async {
     try {
       UserCredential user = await authProvider.signInWithGoogle();
-      await FirebaseApi().initNotifications();
+      await FirebaseNotification().initNotifications();
       await authProvider.firestore
           .collection('users')
           .doc(user.user?.email)

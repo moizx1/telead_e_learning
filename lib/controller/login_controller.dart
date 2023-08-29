@@ -12,7 +12,7 @@ import '../constants/app_keys.dart';
 import '../constants/constant.dart';
 import '../model/user_model.dart';
 import '../services/AuthProvider.dart';
-import '../services/FirebaseApi.dart';
+import '../services/FirebaseNotification.dart';
 
 class LoginController extends GetxController {
   AuthProvider authProvider = AuthProvider();
@@ -50,7 +50,7 @@ class LoginController extends GetxController {
         barrierDismissible: false,
       );
       UserCredential userCredential = await authProvider.signInWithGoogle();
-      await FirebaseApi().initNotifications();
+      await FirebaseNotification().initNotifications();
       await authProvider.firestore
           .collection('users')
           .doc(userCredential.user?.email)

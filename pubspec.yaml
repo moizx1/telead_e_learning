@@ -31,6 +31,9 @@ dependencies:
   google_sign_in: ^6.1.4
   firebase_messaging: ^14.6.6
   flutter_local_notifications: ^15.1.0+1
+  image_picker: ^1.0.2
+  permission_handler: ^10.4.3
+  path_provider: ^2.1.0
 
 dev_dependencies:
   flutter_test:

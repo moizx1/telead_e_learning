@@ -4,7 +4,6 @@ class ProfileController extends GetxController {
   onTileTap({route}) => Get.toNamed(route);
   onBack(result) {
     if (result != null) {
-      print(result);
       update();
     }
   }
