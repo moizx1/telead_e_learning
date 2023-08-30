@@ -15,6 +15,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:video_player/video_player.dart';
+import 'package:video_thumbnail/video_thumbnail.dart';
 import '../constants/app_keys.dart';
 
 class ChatScreenController extends GetxController {
@@ -23,10 +25,11 @@ class ChatScreenController extends GetxController {
   final User? loggedInUser;
 
   String? type;
-  late String receiverToken;
+  String? receiverToken;
   final ImagePicker _imagePicker = ImagePicker();
   List<XFile> imageFileList = [];
   XFile? pickedVideo;
+  late File videoThumbnail;
   List<String> downloadUrls = [];
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseStorage storage = FirebaseStorage.instance;
@@ -45,7 +48,6 @@ class ChatScreenController extends GetxController {
         .snapshots();
     final result = await firestore.collection('users').doc(receiverId).get();
     receiverToken = result['fcmToken'];
-    print(receiverToken);
     super.onInit();
   }
 
@@ -121,10 +123,18 @@ class ChatScreenController extends GetxController {
       const Center(child: CircularProgressIndicator()),
       barrierDismissible: false,
     );
-    var response = await Dio()
-        .get(videoUrl, options: Options(responseType: ResponseType.bytes));
-    await ImageGallerySaver.saveImage(Uint8List.fromList(response.data),
-        quality: 100, name: 'hello');
+    final appDocDirectory = await getAppDocDirectory();
+    final finalVideoPath = join(
+      appDocDirectory.path,
+      'Video-${DateTime.now().millisecondsSinceEpoch}.mp4',
+    );
+    final dio = Dio();
+    await dio.download(
+      videoUrl,
+      finalVideoPath,
+    );
+    await saveDownloadedVideoToGallery(videoPath: finalVideoPath);
+    await removeDownloadedVideo(videoPath: finalVideoPath);
     Get.back();
     Get.defaultDialog(
         title: 'Completed',
@@ -139,6 +149,39 @@ class ChatScreenController extends GetxController {
               },
               child: const Text('Ok'))
         ]);
+  }
+
+  Future<Directory> getAppDocDirectory() async {
+    if (Platform.isIOS) {
+      return getApplicationDocumentsDirectory();
+    }
+
+    return (await getExternalStorageDirectory())!;
+  }
+
+  Future<void> saveDownloadedVideoToGallery({required String videoPath}) async {
+    await ImageGallerySaver.saveFile(videoPath);
+  }
+
+  Future<void> removeDownloadedVideo({required String videoPath}) async {
+    try {
+      Directory(videoPath).deleteSync(recursive: true);
+    } catch (error) {
+      debugPrint('$error');
+    }
+  }
+
+  Future<File> generateThumbnail(String url) async {
+    final String? path = await VideoThumbnail.thumbnailFile(
+      video: url,
+      thumbnailPath: (await getTemporaryDirectory()).path,
+
+      /// path_provider
+      imageFormat: ImageFormat.PNG,
+      maxHeight: 50,
+      quality: 50,
+    );
+    return File(path ?? '');
   }
 
   void removeImages(index) {
@@ -174,7 +217,9 @@ class ChatScreenController extends GetxController {
   }
 
   Future<void> sendVideo(
-      String? chatId, XFile? pickedVideo, String receiverToken) async {
+      String? chatId, XFile? pickedVideo, String? receiverToken) async {
+    isUploading = true;
+    update();
     FirebaseStorage storage = FirebaseStorage.instance;
     Reference storageRef = storage.ref();
     String fileName = basename(pickedVideo!.path);
@@ -202,14 +247,20 @@ class ChatScreenController extends GetxController {
           'time': DateTime.now(),
         },
       );
-      await sendNotification('Video', receiverToken);
+      selectVideo = false;
+      pickedVideo = null;
+      isUploading = false;
+      update();
+      await sendNotification('Video', receiverToken ?? '');
     } catch (e) {
       print("Error uploading image: $e");
     }
   }
 
   Future<void> sendImage(
-      String? chatId, XFile image, String receiverToken) async {
+      String? chatId, XFile image, String? receiverToken) async {
+    isUploading = true;
+    update();
     FirebaseStorage storage = FirebaseStorage.instance;
     Reference storageRef = storage.ref();
     String fileName = basename(image.path);
@@ -237,14 +288,20 @@ class ChatScreenController extends GetxController {
           'time': DateTime.now(),
         },
       );
-      await sendNotification('Image', receiverToken);
+      selectImages = false;
+      imageFileList = [];
+      isUploading = false;
+      update();
+      if (receiverToken != null) {
+        await sendNotification('Image', receiverToken);
+      }
     } catch (e) {
       print("Error uploading image: $e");
     }
   }
 
   Future<void> sendMessage(
-      String? chatId, String messageString, String receiverToken) async {
+      String? chatId, String messageString, String? receiverToken) async {
     try {
       await firestore
           .collection('chats')
