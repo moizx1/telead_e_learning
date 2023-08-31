@@ -51,6 +51,14 @@ class ChatScreenController extends GetxController {
     super.onInit();
   }
 
+  void createCall(String callerId, String receiverId) {
+    firestore.collection('calls').add({
+      'callerId': callerId,
+      'receiverId': receiverId,
+      // 'status': 'initiated', // You can update this as the call progresses
+    });
+  }
+
   void pickImages() async {
     if (imageFileList.isEmpty) {
       final List<XFile> selectedImages = await _imagePicker.pickMultiImage();

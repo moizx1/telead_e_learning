@@ -37,6 +37,9 @@ dependencies:
   dio: ^5.3.2
   image_gallery_saver: ^2.0.3
   video_thumbnail: ^0.5.3
+  agora_rtc_engine: ^6.2.2
+  audioplayers: ^5.1.0
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:

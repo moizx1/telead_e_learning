@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:telead_e_learning/model/user_model.dart';
 import 'package:telead_e_learning/services/AuthProvider.dart';
 
-import '../constants/constant.dart';
+import '../constants/constants.dart';
 import '../screen/login.dart';
 import '../services/FirebaseNotification.dart';
 

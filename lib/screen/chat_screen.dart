@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
+import 'package:telead_e_learning/constants/constants.dart';
 import 'package:telead_e_learning/widget/custom_app_bar.dart';
 
 import '../controller/chat_screen_controller.dart';
@@ -22,11 +23,11 @@ class ChatScreen extends StatelessWidget {
         builder: (controller) {
           return Scaffold(
             appBar: CustomAppBar(
-              title: 'David Beckham',
+              title: args[1],
               trailing: Padding(
                 padding: const EdgeInsets.only(right: 14),
                 child: IconButton(
-                  onPressed: controller.onCallTap,
+                  onPressed: ()=>controller.createCall(args[2].email, args[1]),
                   icon: const Icon(Icons.local_phone_outlined, size: 24),
                 ),
               ),

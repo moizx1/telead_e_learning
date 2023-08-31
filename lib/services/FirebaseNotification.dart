@@ -3,7 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:telead_e_learning/constants/constant.dart';
+import 'package:telead_e_learning/constants/constants.dart';
 
 class FirebaseNotification {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;

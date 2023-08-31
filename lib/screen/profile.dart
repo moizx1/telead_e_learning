@@ -5,7 +5,7 @@ import 'package:telead_e_learning/widget/custom_app_bar.dart';
 import 'package:telead_e_learning/widget/profile_widget.dart';
 
 import '../constants/app_keys.dart';
-import '../constants/constant.dart';
+import '../constants/constants.dart';
 import '../controller/profile_controller.dart';
 
 class Profile extends StatelessWidget {

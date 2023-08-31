@@ -9,7 +9,7 @@ import 'package:telead_e_learning/screen/add_profile_info.dart';
 import 'package:telead_e_learning/screen/dashboard.dart';
 import 'package:telead_e_learning/screen/home.dart';
 import '../constants/app_keys.dart';
-import '../constants/constant.dart';
+import '../constants/constants.dart';
 import '../model/user_model.dart';
 import '../services/AuthProvider.dart';
 import '../services/FirebaseNotification.dart';

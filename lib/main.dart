@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:telead_e_learning/constants/constant.dart';
+import 'package:telead_e_learning/constants/constants.dart';
 import 'package:telead_e_learning/model/filter_course_model.dart';
 import 'package:telead_e_learning/screen/add_new_card.dart';
 import 'package:telead_e_learning/screen/add_profile_info.dart';
@@ -51,6 +51,7 @@ import 'package:telead_e_learning/screen/verify_password.dart';
 import 'package:telead_e_learning/screen/voice_call_screen.dart';
 import 'package:telead_e_learning/screen/write_review.dart';
 import 'package:telead_e_learning/services/AuthProvider.dart';
+import 'package:telead_e_learning/services/CallListener.dart';
 import 'package:telead_e_learning/services/FirebaseNotification.dart';
 import 'package:telead_e_learning/widget/reset_password_card.dart';
 import 'package:telead_e_learning/widget/video_player_screen.dart';
@@ -66,8 +67,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await getStorage.initStorage;
+
+  CallListener callListener = CallListener();
+  callListener.startCallListener();
+
   runApp(
-    MyApp(), // Your main widget
+    const MyApp(), // Your main widget
   );
 }
 
@@ -130,7 +135,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/chatScreen', page: () => ChatScreen()),
             GetPage(name: '/viewImage', page: () => ViewImage()),
             GetPage(name: '/inbox', page: () => Inbox()),
-            GetPage(name: '/voiceCallScreen', page: () => VoiceCallScreen()),
+            // GetPage(name: '/voiceCallScreen', page: () => VoiceCallScreen()),
             GetPage(name: '/editProfile', page: () => EditProfile()),
             GetPage(name: '/paymentMethods', page: () => PaymentMethods()),
             GetPage(name: '/paymentOptions', page: () => PaymentOptions()),
