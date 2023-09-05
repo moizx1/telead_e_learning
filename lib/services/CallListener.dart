@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:telead_e_learning/widget/accept_call.dart';
+import 'package:telead_e_learning/widgets/accept_call.dart';
 
 import '../constants/constants.dart';
-import '../screen/dashboard/inbox/voice_call_screen.dart';
+import '../screens/dashboard/inbox/voice_call_screen.dart';
 
 class CallListener {
   void startCallListener() {
