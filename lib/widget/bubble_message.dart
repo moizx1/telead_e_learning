@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:telead_e_learning/controller/chat_screen_controller.dart';
 import 'package:telead_e_learning/widget/video_player_screen.dart';
+
+import '../controller/dashboard/inbox/chat_screen_controller.dart';
 
 class BubbleMessage extends StatelessWidget {
   const BubbleMessage({

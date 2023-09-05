@@ -1,7 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:telead_e_learning/screen/register.dart';
 
 class CustomRichText extends StatelessWidget {
   const CustomRichText({super.key, this.text, this.buttonText, this.onTap});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:telead_e_learning/controller/video_controller.dart';
-import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 import 'package:get/get.dart';
+
+import '../controller/widgets/video_player_controller.dart';
 
 class VideoPlayerScreen extends StatelessWidget {
   const VideoPlayerScreen({super.key, required this.url});

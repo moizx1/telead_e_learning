@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:telead_e_learning/screen/voice_call_screen.dart';
+import 'package:telead_e_learning/widget/accept_call.dart';
 
 import '../constants/constants.dart';
+import '../screen/dashboard/inbox/voice_call_screen.dart';
 
 class CallListener {
   void startCallListener() {
@@ -18,17 +19,11 @@ class CallListener {
           if (document['callerId'] == userData?.email) {
             Get.to(
               VoiceCallScreen(
-                boolHost: true,
-                boolJoined: true,
-                receiverId: document['callerId'],
               ),
             );
           } else {
             Get.to(
-              VoiceCallScreen(
-                boolHost: false,
-                boolJoined: false,
-                receiverId: document['callerId'],
+              const AcceptCall(
               ),
             );
           }

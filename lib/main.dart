@@ -1,65 +1,50 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:telead_e_learning/constants/constants.dart';
-import 'package:telead_e_learning/model/filter_course_model.dart';
-import 'package:telead_e_learning/screen/add_new_card.dart';
-import 'package:telead_e_learning/screen/add_profile_info.dart';
-import 'package:telead_e_learning/screen/all_category.dart';
-import 'package:telead_e_learning/screen/auth_options.dart';
-import 'package:telead_e_learning/screen/bookmarks.dart';
-import 'package:telead_e_learning/screen/chat_screen.dart';
-import 'package:telead_e_learning/screen/completed_lessons.dart';
-import 'package:telead_e_learning/screen/courses_list.dart';
-import 'package:telead_e_learning/screen/create_new_password.dart';
-import 'package:telead_e_learning/screen/create_new_pin.dart';
-import 'package:telead_e_learning/screen/curriculum.dart';
-import 'package:telead_e_learning/screen/dashboard.dart';
-import 'package:telead_e_learning/screen/edit_profile.dart';
-import 'package:telead_e_learning/screen/filter_courses.dart';
-import 'package:telead_e_learning/screen/forgot_password.dart';
-import 'package:telead_e_learning/screen/home.dart';
-import 'package:telead_e_learning/screen/inbox.dart';
-import 'package:telead_e_learning/screen/invite_friends.dart';
-import 'package:telead_e_learning/screen/language.dart';
-import 'package:telead_e_learning/screen/login.dart';
-import 'package:telead_e_learning/screen/mentor_details.dart';
-import 'package:telead_e_learning/screen/my_courses.dart';
-import 'package:telead_e_learning/screen/notification_settings.dart';
-import 'package:telead_e_learning/screen/notifications.dart';
-import 'package:telead_e_learning/screen/ongoing_lessons.dart';
-import 'package:telead_e_learning/screen/payment_methods.dart';
-import 'package:telead_e_learning/screen/payment_options.dart';
-import 'package:telead_e_learning/screen/popular_courses.dart';
-import 'package:telead_e_learning/screen/register.dart';
-import 'package:telead_e_learning/screen/reviews.dart';
-import 'package:telead_e_learning/screen/search.dart';
-import 'package:telead_e_learning/screen/security.dart';
-import 'package:telead_e_learning/screen/set_fingerprint.dart';
-import 'package:telead_e_learning/screen/single_course_details.dart';
-import 'package:telead_e_learning/screen/splash.dart';
-import 'package:telead_e_learning/screen/start.dart';
-import 'package:telead_e_learning/screen/terms_conditions.dart';
-import 'package:telead_e_learning/screen/top_mentors.dart';
-import 'package:telead_e_learning/screen/transactions.dart';
-import 'package:telead_e_learning/screen/verify_password.dart';
-import 'package:telead_e_learning/screen/voice_call_screen.dart';
-import 'package:telead_e_learning/screen/write_review.dart';
-import 'package:telead_e_learning/services/AuthProvider.dart';
-import 'package:telead_e_learning/services/CallListener.dart';
-import 'package:telead_e_learning/services/FirebaseNotification.dart';
-import 'package:telead_e_learning/widget/reset_password_card.dart';
-import 'package:telead_e_learning/widget/video_player_screen.dart';
-import 'package:telead_e_learning/widget/view_image.dart';
-import 'controller/completed_lessons_controller.dart';
-import 'screen/certificate.dart';
-import 'screen/profile.dart';
-import 'screen/receipt.dart';
+
+import 'screen/auth/add_profile_info.dart';
+import 'screen/auth/auth_options.dart';
+import 'screen/auth/create_new_password.dart';
+import 'screen/auth/create_new_pin.dart';
+import 'screen/auth/forgot_password.dart';
+import 'screen/auth/login.dart';
+import 'screen/auth/register.dart';
+import 'screen/auth/set_fingerprint.dart';
+import 'screen/auth/splash.dart';
+import 'screen/auth/start.dart';
+import 'screen/auth/verify_password.dart';
+import 'screen/dashboard/dashboard.dart';
+import 'screen/dashboard/home/all_category.dart';
+import 'screen/dashboard/home/course/courses_list.dart';
+import 'screen/dashboard/home/course/curriculum.dart';
+import 'screen/dashboard/home/course/payment_methods.dart';
+import 'screen/dashboard/home/course/popular_courses.dart';
+import 'screen/dashboard/home/course/reviews.dart';
+import 'screen/dashboard/home/course/single_course_details.dart';
+import 'screen/dashboard/home/course/top_mentors.dart';
+import 'screen/dashboard/home/course/write_review.dart';
+import 'screen/dashboard/home/home.dart';
+import 'screen/dashboard/home/notifications.dart';
+import 'screen/dashboard/home/search.dart';
+import 'screen/dashboard/inbox/chat_screen.dart';
+import 'screen/dashboard/inbox/inbox.dart';
+import 'screen/dashboard/my_courses/certificate.dart';
+import 'screen/dashboard/my_courses/completed_lessons.dart';
+import 'screen/dashboard/my_courses/ongoing_lessons.dart';
+import 'screen/dashboard/profile/add_new_card.dart';
+import 'screen/dashboard/profile/edit_profile.dart';
+import 'screen/dashboard/profile/invite_friends.dart';
+import 'screen/dashboard/profile/language.dart';
+import 'screen/dashboard/profile/notification_settings.dart';
+import 'screen/dashboard/profile/payment_options.dart';
+import 'screen/dashboard/profile/profile.dart';
+import 'screen/dashboard/profile/security.dart';
+import 'screen/dashboard/profile/terms_conditions.dart';
+import 'screen/dashboard/transactions/receipt.dart';
+import 'services/CallListener.dart';
+import 'widget/view_image.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -124,7 +109,6 @@ class MyApp extends StatelessWidget {
                 name: '/singleCourseDetails',
                 page: () => SingleCourseDetails()),
             GetPage(name: '/topMentors', page: () => TopMentors()),
-            GetPage(name: '/topMentors', page: () => TopMentors()),
             GetPage(name: '/completedLessons', page: () => CompletedLessons()),
             GetPage(name: '/certificate', page: () => Certificate()),
             GetPage(name: '/ongoingLessons', page: () => OngoingLessons()),
@@ -149,7 +133,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/curriculum', page: () => Curriculum()),
             GetPage(name: '/reviews', page: () => Reviews()),
             GetPage(name: '/writeReview', page: () => WriteReview()),
-            //GetPage( name:'/profile',page: () => Profile()),
+            GetPage( name:'/profile',page: () => Profile()),
             GetPage(name: '/language', page: () => Language()),
             GetPage(name: '/dashboard', page: () => Dashboard()),
             GetPage(name: '/terms', page: () => TermsConditions()),
